@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://7a4dethp2ikh"
+path="res://.godot/imported/bounce_back.ogg-bd1cd25200cf1bc5aab10d750f13bb38.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/bounce_back.ogg"
+dest_files=["res://.godot/imported/bounce_back.ogg-bd1cd25200cf1bc5aab10d750f13bb38.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

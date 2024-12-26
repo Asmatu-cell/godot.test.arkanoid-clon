@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cyoa8pjh8ghb7"
+path="res://.godot/imported/achieved.ogg-2ec87afd99d50745ca2b0b3ef9881cdb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/achieved.ogg"
+dest_files=["res://.godot/imported/achieved.ogg-2ec87afd99d50745ca2b0b3ef9881cdb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

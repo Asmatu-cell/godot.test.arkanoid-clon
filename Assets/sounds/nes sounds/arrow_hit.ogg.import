@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cc01d26svhgnu"
+path="res://.godot/imported/arrow_hit.ogg-7515ebf3b59a67f73c64780042bc7407.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/arrow_hit.ogg"
+dest_files=["res://.godot/imported/arrow_hit.ogg-7515ebf3b59a67f73c64780042bc7407.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

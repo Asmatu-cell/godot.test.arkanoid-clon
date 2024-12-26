@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8gu4c0hduxbe"]
+
+[ext_resource type="Script" path="res://Scenes/tabla/tabla.gd" id="1_odv7k"]
+[ext_resource type="Texture2D" uid="uid://4dj2pgs7w464" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser.png" id="1_ywqq3"]
+[ext_resource type="Texture2D" uid="uid://gc6wjccvo2cl" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser_shooter.png" id="2_m38ub"]
+[ext_resource type="AudioStream" uid="uid://5ghupy0kg4co" path="res://Assets/sounds/nes sounds/coin.ogg" id="4_gkuc5"]
+[ext_resource type="AudioStream" uid="uid://7a4dethp2ikh" path="res://Assets/sounds/nes sounds/bounce_back.ogg" id="5_75orq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdy0h"]
+size = Vector2(46, 59.5)
+
+[node name="Tabla" type="CharacterBody2D"]
+scale = Vector2(0.9, 0.9)
+motion_mode = 1
+script = ExtResource("1_odv7k")
+
+[node name="Shoters Container" type="Sprite2D" parent="."]
+visible = false
+
+[node name="LaserShooter" type="Sprite2D" parent="Shoters Container"]
+z_index = -1
+position = Vector2(90, -9)
+scale = Vector2(0.351, 0.351)
+texture = ExtResource("2_m38ub")
+
+[node name="LaserShooter2" type="Sprite2D" parent="Shoters Container"]
+z_index = -1
+position = Vector2(-90, -9)
+scale = Vector2(0.351, 0.351)
+texture = ExtResource("2_m38ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.4, -2.75)
+shape = SubResource("RectangleShape2D_wdy0h")
+one_way_collision_margin = 2.0
+
+[node name="Laser" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(-6.70552e-08, 0)
+scale = Vector2(2, 0.25)
+texture = ExtResource("1_ywqq3")
+
+[node name="AudioReset" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gkuc5")
+
+[node name="AudioExplosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_75orq")
+
+[connection signal="new_ball" from="." to="." method="_on_new_ball"]

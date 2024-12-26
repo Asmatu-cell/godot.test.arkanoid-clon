@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhe0aqb311uvx"]
+
+[ext_resource type="Script" path="res://Scenes/Bloques/bloque_amarillo.gd" id="1_sps4h"]
+[ext_resource type="Texture2D" uid="uid://ltqc55vfqpd2" path="res://Assets/bloques/amarillo-doble/block-2.png" id="2_nxmen"]
+[ext_resource type="AudioStream" uid="uid://dnd1ca63r0jk5" path="res://Assets/sounds/nes sounds/bomb.ogg" id="3_eadcu"]
+[ext_resource type="AudioStream" uid="uid://6csfolesa7h2" path="res://Assets/sounds/nes sounds/bird.ogg" id="4_7x4pj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i55x1"]
+size = Vector2(140, 60)
+
+[node name="Bloque Amarillo" type="StaticBody2D"]
+script = ExtResource("1_sps4h")
+hits = 2
+BLOCK_FOLDER = "amarillo-doble"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.964706, 1, 0, 1)
+texture = ExtResource("2_nxmen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_i55x1")
+
+[node name="AudioBreak" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_eadcu")
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7x4pj")
+
+[connection signal="hit" from="." to="." method="_on_hit"]

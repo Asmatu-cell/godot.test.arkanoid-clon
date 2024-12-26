@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://6csfolesa7h2"
+path="res://.godot/imported/bird.ogg-b7788b8d5b783349ced6a68832a37147.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/bird.ogg"
+dest_files=["res://.godot/imported/bird.ogg-b7788b8d5b783349ced6a68832a37147.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

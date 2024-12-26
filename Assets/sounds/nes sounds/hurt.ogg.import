@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bcavmheilqyq5"
+path="res://.godot/imported/hurt.ogg-07088a4892e48a49c50c52bc1b41092b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/hurt.ogg"
+dest_files=["res://.godot/imported/hurt.ogg-07088a4892e48a49c50c52bc1b41092b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

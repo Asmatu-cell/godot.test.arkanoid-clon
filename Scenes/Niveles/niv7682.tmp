@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6ung2w2syfqp"]
+
+[ext_resource type="PackedScene" uid="uid://cmnxmea36b686" path="res://Scenes/paredes/paredes.tscn" id="1_3j3ef"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="2_sewoi"]
+[ext_resource type="PackedScene" uid="uid://b8gu4c0hduxbe" path="res://Scenes/tabla/tabla.tscn" id="3_nm7ot"]
+[ext_resource type="PackedScene" uid="uid://b7umm0epvhq0t" path="res://Scenes/pelota/pelota.tscn" id="4_lovy2"]
+[ext_resource type="PackedScene" uid="uid://dhe0aqb311uvx" path="res://Scenes/Bloques/bloque_amarillo.tscn" id="5_b17kn"]
+[ext_resource type="PackedScene" uid="uid://bqs2wamsewn58" path="res://Scenes/Bloques/bloque_azul.tscn" id="6_o068s"]
+
+[node name="Nivel 0" type="Node2D"]
+
+[node name="Paredes" parent="." instance=ExtResource("1_3j3ef")]
+position = Vector2(64, 2)
+
+[node name="Camera2D" type="Camera2D" parent="Paredes"]
+position = Vector2(-1.99998, 207)
+rotation = -1.5708
+anchor_mode = 0
+zoom = Vector2(0.8, 0.8)
+script = ExtResource("2_sewoi")
+
+[node name="Tabla" parent="." instance=ExtResource("3_nm7ot")]
+position = Vector2(548, 728)
+
+[node name="Pelota" parent="." instance=ExtResource("4_lovy2")]
+position = Vector2(532, 306)
+
+[node name="Bloques" type="Node" parent="."]
+
+[node name="Bloque Azul" parent="Bloques" instance=ExtResource("6_o068s")]
+position = Vector2(256, 160)
+
+[node name="Bloque Azul2" parent="Bloques" instance=ExtResource("6_o068s")]
+position = Vector2(384, 160)
+
+[node name="Bloque Azul3" parent="Bloques" instance=ExtResource("6_o068s")]
+position = Vector2(512, 161)
+
+[node name="Bloque Azul4" parent="Bloques" instance=ExtResource("6_o068s")]
+position = Vector2(640, 161)
+
+[node name="Bloque Azul5" parent="Bloques" instance=ExtResource("6_o068s")]
+position = Vector2(768, 161)
+
+[node name="Bloque Azul6" parent="Bloques" instance=ExtResource("6_o068s")]
+position = Vector2(896, 162)
+
+[node name="Bloque Amarillo" parent="Bloques" instance=ExtResource("5_b17kn")]
+position = Vector2(256, 215)
+
+[node name="Bloque Amarillo2" parent="Bloques" instance=ExtResource("5_b17kn")]
+position = Vector2(384, 215)

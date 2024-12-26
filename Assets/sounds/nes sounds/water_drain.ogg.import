@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://2pduob8cs88b"
+path="res://.godot/imported/water_drain.ogg-dea6eebd7a9465e521e19c7ba4912816.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/water_drain.ogg"
+dest_files=["res://.godot/imported/water_drain.ogg-dea6eebd7a9465e521e19c7ba4912816.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

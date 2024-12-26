@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ds3w88ujhpn52"
+path="res://.godot/imported/nearly_dead.ogg-9eceec03c272e771e2e4491ba242f99e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/nearly_dead.ogg"
+dest_files=["res://.godot/imported/nearly_dead.ogg-9eceec03c272e771e2e4491ba242f99e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cwcy27678l5vf"
+path="res://.godot/imported/hit.ogg-156af41d550d71de774b40bafc583ae8.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/hit.ogg"
+dest_files=["res://.godot/imported/hit.ogg-156af41d550d71de774b40bafc583ae8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

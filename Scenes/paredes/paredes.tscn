@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmnxmea36b686"]
+
+[ext_resource type="Texture2D" uid="uid://dt30xacjo8ej3" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/block_large.png" id="1_8gekk"]
+[ext_resource type="Script" path="res://Scenes/paredes/paredes.gd" id="1_g66gu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibuhm"]
+size = Vector2(35.4767, 57.9058)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yyst"]
+size = Vector2(4.1061, 379.994)
+
+[node name="Paredes" type="StaticBody2D"]
+position = Vector2(64, 0)
+rotation = 1.5708
+script = ExtResource("1_g66gu")
+
+[node name="ParedFinal" type="CollisionShape2D" parent="."]
+position = Vector2(978.247, -511.842)
+rotation = 3.14159
+scale = Vector2(2.1563, 17.7758)
+shape = SubResource("RectangleShape2D_ibuhm")
+
+[node name="ParedArriba" type="StaticBody2D" parent="."]
+
+[node name="BlockLarge" type="Sprite2D" parent="ParedArriba"]
+position = Vector2(32, -128)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge2" type="Sprite2D" parent="ParedArriba"]
+position = Vector2(32, -384)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge3" type="Sprite2D" parent="ParedArriba"]
+position = Vector2(32, -640)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge4" type="Sprite2D" parent="ParedArriba"]
+position = Vector2(32, -896)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedArriba"]
+position = Vector2(54.3201, -498)
+rotation = 3.14159
+scale = Vector2(5.185, -2.8)
+shape = SubResource("RectangleShape2D_7yyst")
+
+[node name="ParedIzquierda" type="StaticBody2D" parent="."]
+rotation = 1.5708
+
+[node name="BlockLarge" type="Sprite2D" parent="ParedIzquierda"]
+position = Vector2(32, -128)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge2" type="Sprite2D" parent="ParedIzquierda"]
+position = Vector2(32, -384)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge3" type="Sprite2D" parent="ParedIzquierda"]
+position = Vector2(32, -640)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge4" type="Sprite2D" parent="ParedIzquierda"]
+position = Vector2(32, -896)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedIzquierda"]
+position = Vector2(19.0001, -462.095)
+rotation = 3.14159
+scale = Vector2(0.96, 18.16)
+shape = SubResource("RectangleShape2D_ibuhm")
+
+[node name="ParedDerecha" type="StaticBody2D" parent="."]
+position = Vector2(0, -1088)
+rotation = 1.5708
+
+[node name="BlockLarge" type="Sprite2D" parent="ParedDerecha"]
+position = Vector2(32, -128)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge2" type="Sprite2D" parent="ParedDerecha"]
+position = Vector2(32, -384)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge3" type="Sprite2D" parent="ParedDerecha"]
+position = Vector2(32, -640)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="BlockLarge4" type="Sprite2D" parent="ParedDerecha"]
+position = Vector2(32, -896)
+scale = Vector2(0.5, 1)
+texture = ExtResource("1_8gekk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedDerecha"]
+position = Vector2(47, -472.427)
+rotation = 3.14159
+scale = Vector2(0.96, 18.16)
+shape = SubResource("RectangleShape2D_ibuhm")
+
+[connection signal="out" from="." to="." method="_on_out"]

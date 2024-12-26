@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7umm0epvhq0t"]
+
+[ext_resource type="Texture2D" uid="uid://610fpns2ywkl" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/ball_blue_small.png" id="1_55xrq"]
+[ext_resource type="Script" path="res://Scenes/pelota.gd" id="1_cv72r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_omwpm"]
+radius = 15.2971
+
+[node name="Pelota" type="RigidBody2D"]
+inertia = 1.0
+lock_rotation = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_cv72r")
+
+[node name="BallBlueSmall" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_55xrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_omwpm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

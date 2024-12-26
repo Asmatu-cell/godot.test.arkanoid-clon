@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqs2wamsewn58"]
+
+[ext_resource type="Script" path="res://Scenes/Bloques/bloque_azul.gd" id="1_ymxen"]
+[ext_resource type="Texture2D" uid="uid://dwxax6eu5kgn5" path="res://Assets/bloques/azul-simple/block-1.png" id="2_67liw"]
+[ext_resource type="AudioStream" uid="uid://c2j2ivnvb0rbd" path="res://Assets/sounds/nes sounds/magic.ogg" id="3_vlq3s"]
+[ext_resource type="AudioStream" uid="uid://6csfolesa7h2" path="res://Assets/sounds/nes sounds/bird.ogg" id="4_bax7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go741"]
+size = Vector2(35, 15)
+
+[node name="Bloque Azul" type="StaticBody2D"]
+script = ExtResource("1_ymxen")
+BLOCK_FOLDER = "azul-simple"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_67liw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -3.14159
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_go741")
+
+[node name="AudioBreak" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vlq3s")
+pitch_scale = 1.3
+
+[node name="AudioHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bax7j")
+
+[connection signal="hit" from="." to="." method="_on_hit"]

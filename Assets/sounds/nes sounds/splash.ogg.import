@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c0qbitef1ke7k"
+path="res://.godot/imported/splash.ogg-985013e9b5e2179ba18cca7f85b01ba3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/splash.ogg"
+dest_files=["res://.godot/imported/splash.ogg-985013e9b5e2179ba18cca7f85b01ba3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c88ftw6njoht3"]
+
+[ext_resource type="Script" path="res://Scenes/bloqueController.gd" id="1_6lbfg"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_6lbfg")

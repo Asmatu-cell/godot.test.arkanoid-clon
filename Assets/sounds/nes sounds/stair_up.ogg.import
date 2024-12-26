@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://65bf3b7c7sb3"
+path="res://.godot/imported/stair_up.ogg-5502e98f2bed68635e296ddb11865bc8.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/stair_up.ogg"
+dest_files=["res://.godot/imported/stair_up.ogg-5502e98f2bed68635e296ddb11865bc8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

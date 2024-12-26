@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://uscu7ph6bh38"
+path="res://.godot/imported/fly_away.ogg-bbd879af4cdec3ea00439b1bc0f7d85f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/sounds/nes sounds/fly_away.ogg"
+dest_files=["res://.godot/imported/fly_away.ogg-bbd879af4cdec3ea00439b1bc0f7d85f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

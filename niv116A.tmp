@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ung2w2syfqp"]
+
+[ext_resource type="PackedScene" uid="uid://cmnxmea36b686" path="res://Scenes/paredes.tscn" id="1_wfh6r"]
+[ext_resource type="PackedScene" uid="uid://b8gu4c0hduxbe" path="res://Scenes/tabla.tscn" id="2_c74l6"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_ej7nr"]
+[ext_resource type="PackedScene" uid="uid://b7umm0epvhq0t" path="res://Scenes/pelota.tscn" id="3_lwrbm"]
+
+[node name="Nivel 0" type="Node2D"]
+
+[node name="Paredes" parent="." instance=ExtResource("1_wfh6r")]
+position = Vector2(64, 2)
+
+[node name="Camera2D" type="Camera2D" parent="Paredes"]
+position = Vector2(-1.99977, 64)
+rotation = -1.5708
+anchor_mode = 0
+script = ExtResource("2_ej7nr")
+
+[node name="Tabla" parent="." instance=ExtResource("2_c74l6")]
+position = Vector2(548, 547)
+
+[node name="Pelota" parent="." instance=ExtResource("3_lwrbm")]
+position = Vector2(532, 306)
+
+[node name="Bloques" type="Node" parent="."]
