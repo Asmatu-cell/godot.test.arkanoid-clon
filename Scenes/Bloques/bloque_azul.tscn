@@ -11,6 +11,7 @@ size = Vector2(35, 15)
 [node name="Bloque Azul" type="StaticBody2D"]
 script = ExtResource("1_ymxen")
 BLOCK_FOLDER = "azul-simple"
+POWER_UP_PROBABILITY = 0.925
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_67liw")

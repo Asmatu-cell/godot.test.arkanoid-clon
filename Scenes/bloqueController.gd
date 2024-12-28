@@ -29,9 +29,9 @@ func _physics_process(delta):
 func set_hits(hitNumber:int):
 	hits = hitNumber
 
-func _on_hit() -> void:
+func _on_hit(always_destroy:bool = false) -> void:
 	hits -= 1
-	if hits < 1:		
+	if hits < 1 || always_destroy:
 		$AudioBreak.play()
 		visible = false
 		destroy()
@@ -47,7 +47,8 @@ func destroy():
 	checkIfPowerUpAppears()
 	destroyed = true
 	visible = false
-	position.y = 1000	
+	position.y = 1000
+	GameController.points_add(25)
 
 func checkIfPowerUpAppears():
 	var aleatorio = randf()

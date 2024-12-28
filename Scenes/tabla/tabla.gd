@@ -12,53 +12,40 @@ const INITIAL_POSITION_Y = 845
 @export var transition_speed = 2.0
 var new_width_scale = 1.0
 var transition_elapsed_time = 0.0
+@export var IS_STICKY:bool = false
 signal new_ball(qty)
+signal set_contact_mode()
 
-func _physics_process(delta):
-	if new_width_scale != scale.x:		
-		transition_elapsed_time += delta / transition_speed		
-		scale.x = lerp(scale.x, new_width_scale, transition_elapsed_time)
-		if (new_width_scale > base_width_scale && scale.x > new_width_scale) || (new_width_scale < base_width_scale && scale.x < new_width_scale):
-			scale.x = new_width_scale
+var sticked_balls: = []
+
+func _physics_process(delta):	 
+	if Input.is_action_just_pressed("disparo") && sticked_balls.size() > 0:
+		for i in sticked_balls.size():
+			sticked_balls[i].emit_signal("ball_end_contact")
+			pass
+		sticked_balls = []
+		
 	# Obtener la dirección del input horizontal
-	var direction = Input.get_axis("lpad", "rpad")
-	var disparado = Input.is_action_just_pressed("disparo")
-	
-	if disparado:
-		disparar()
-		print("hemos disparado")
-	
+	var direction = Input.get_axis("lpad", "rpad")		
 	# Manejar movimiento horizontal y desaceleración
 	if direction != 0:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED * delta * 8)
 	
+	if new_width_scale != scale.x:
+		transition_elapsed_time += delta / transition_speed		
+		scale.x = lerp(scale.x, new_width_scale, transition_elapsed_time)
+		if (new_width_scale > base_width_scale && scale.x > new_width_scale) || (new_width_scale < base_width_scale && scale.x < new_width_scale):
+			scale.x = new_width_scale
 	# Mover el personaje usando la velocidad
 	move_and_slide()
 
-func disparar():
-	#var pelotaActual:pelota = get_tree().current_scene.find_child("Pelota")
-	var pelotasActuales = get_tree().current_scene.find_children("Pelota*", "", false, false)
-	var pelotasActualesSize = pelotasActuales.size()
-	if  pelotasActualesSize < 12:
-		for i in pelotasActuales.size():
-			duplicarPelota(pelotasActuales[i])
-			pelotasActualesSize += 1
-			if  pelotasActualesSize < 12:
-				pass	
-
-func duplicarPelota(pelotaActual:pelota):	
-	var pelotaObject:pelota =  ESCENA_PELOTA.instantiate()
-	pelotaObject.position = pelotaActual.position	
-	get_tree().current_scene.add_child(pelotaObject)	
-	pelotaObject.velocity = pelotaActual.velocity
-	
-	var n = randf()
-	var n2 = 1 + n	
-	pelotaObject.velocity.x = pelotaObject.velocity.x * - n
-	pelotaObject.velocity.y = pelotaObject.velocity.y * - n2
-	pelotaObject.name = "Pelota"
+func _on_new_ball() -> void:
+	await explosion()
+	await reset_positions()
+	await createNewBall()
+	pass
 
 func createNewBall():
 	var pelotaObject:pelota =  ESCENA_PELOTA.instantiate()
@@ -66,11 +53,6 @@ func createNewBall():
 	pelotaObject.position.y -= 10
 	get_tree().current_scene.add_child(pelotaObject)
 
-func _on_new_ball() -> void:
-	await explosion()
-	await reset_positions()
-	await createNewBall()
-	pass
 
 func reset_positions():	
 	position.x = INITIAL_POSITION_X
@@ -87,3 +69,12 @@ func explosion():
 	$AudioExplosion.play()
 	await get_tree().create_timer(1).timeout
 	pass
+
+func is_sticky() -> bool:
+	return IS_STICKY
+	
+func add_sticked_element(pelota_object: pelota):
+	sticked_balls.append(pelota_object)
+	pass
+func _on_set_contact_mode(active: bool) -> void:
+	IS_STICKY = active

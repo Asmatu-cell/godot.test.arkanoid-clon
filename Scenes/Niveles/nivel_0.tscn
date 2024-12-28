@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6ung2w2syfqp"]
+[gd_scene load_steps=9 format=3 uid="uid://c6ung2w2syfqp"]
 
 [ext_resource type="PackedScene" uid="uid://cmnxmea36b686" path="res://Scenes/paredes/paredes.tscn" id="1_3j3ef"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="2_sewoi"]
@@ -8,11 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://bqs2wamsewn58" path="res://Scenes/Bloques/bloque_azul.tscn" id="6_o068s"]
 [ext_resource type="PackedScene" uid="uid://dpsv18r1xkri5" path="res://Scenes/PowerUps/powerUp.tscn" id="7_o25am"]
 
+[sub_resource type="Theme" id="Theme_tekbb"]
+Label/font_sizes/font_size = 30
+Label/fonts/font = null
+
 [node name="Nivel 0" type="Node2D"]
 metadata/_edit_lock_ = true
 
 [node name="Paredes" parent="." instance=ExtResource("1_3j3ef")]
-position = Vector2(64, 2)
+position = Vector2(62, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Paredes"]
 position = Vector2(-1.99999, 302)
@@ -22,7 +26,7 @@ zoom = Vector2(0.7, 0.7)
 script = ExtResource("2_sewoi")
 
 [node name="Tabla" parent="." instance=ExtResource("3_nm7ot")]
-position = Vector2(548.87, 845)
+position = Vector2(560.87, 880)
 scale = Vector2(1, 1)
 
 [node name="Pelota" parent="." instance=ExtResource("4_lovy2")]
@@ -35,206 +39,216 @@ position = Vector2(133, 486)
 [node name="Linea 1" type="Node2D" parent="Bloques/Azules"]
 
 [node name="Bloque Azul" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(197, 166)
+position = Vector2(102, 166)
+
+[node name="Bloque Azul" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(0, 150)
+
+[node name="Bloque Azul2" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(70, 150)
+
+[node name="Bloque Azul3" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(140, 150)
+
+[node name="Bloque Azul4" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(210, 150)
+
+[node name="Bloque Azul5" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(280, 150)
+
+[node name="Bloque Azul6" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(350, 150)
+
+[node name="Bloque Azul7" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(420, 150)
+
+[node name="Bloque Azul8" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(490, 150)
+
+[node name="Bloque Azul9" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(560, 150)
+
+[node name="Bloque Azul10" parent="Bloques/Azules/Linea 1/Bloque Azul" instance=ExtResource("6_o068s")]
+position = Vector2(630, 150)
 
 [node name="Bloque Azul2" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(267, 166)
+position = Vector2(172, 166)
 
 [node name="Bloque Azul3" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(337, 166)
+position = Vector2(242, 166)
 
 [node name="Bloque Azul4" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(407, 166)
+position = Vector2(312, 166)
 
 [node name="Bloque Azul5" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(477, 166)
+position = Vector2(382, 166)
 
 [node name="Bloque Azul6" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(547, 166)
+position = Vector2(452, 166)
 
 [node name="Bloque Azul7" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(617, 166)
+position = Vector2(522, 166)
 
 [node name="Bloque Azul8" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(687, 166)
+position = Vector2(592, 166)
 
 [node name="Bloque Azul9" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(757, 166)
+position = Vector2(662, 166)
 
 [node name="Bloque Azul10" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(827, 166)
-
-[node name="Bloque Azul11" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(897, 166)
-
-[node name="Bloque Azul12" parent="Bloques/Azules/Linea 1" instance=ExtResource("6_o068s")]
-position = Vector2(967, 166)
+position = Vector2(732, 166)
 
 [node name="Linea 2" type="Node2D" parent="Bloques/Azules"]
 
 [node name="Bloque Azul" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(197, 226)
+position = Vector2(102, 226)
 
 [node name="Bloque Azul2" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(267, 226)
+position = Vector2(172, 226)
 
 [node name="Bloque Azul3" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(337, 226)
+position = Vector2(242, 226)
 
 [node name="Bloque Azul4" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(407, 226)
+position = Vector2(312, 226)
 
 [node name="Bloque Azul5" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(477, 226)
+position = Vector2(382, 226)
 
 [node name="Bloque Azul6" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(547, 226)
+position = Vector2(452, 226)
 
 [node name="Bloque Azul7" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(617, 226)
+position = Vector2(522, 226)
 
 [node name="Bloque Azul8" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(687, 226)
+position = Vector2(592, 226)
 
 [node name="Bloque Azul9" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(757, 226)
+position = Vector2(662, 226)
 
 [node name="Bloque Azul10" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(827, 226)
-
-[node name="Bloque Azul11" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(897, 226)
-
-[node name="Bloque Azul12" parent="Bloques/Azules/Linea 2" instance=ExtResource("6_o068s")]
-position = Vector2(967, 226)
+position = Vector2(732, 226)
 
 [node name="Linea 3" type="Node2D" parent="Bloques/Azules"]
 
 [node name="Bloque Azul" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(197, 256)
+position = Vector2(102, 256)
 
 [node name="Bloque Azul2" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(267, 256)
+position = Vector2(172, 256)
 
 [node name="Bloque Azul3" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(337, 256)
+position = Vector2(242, 256)
 
 [node name="Bloque Azul4" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(407, 256)
+position = Vector2(312, 256)
 
 [node name="Bloque Azul5" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(477, 256)
+position = Vector2(382, 256)
 
 [node name="Bloque Azul6" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(547, 256)
+position = Vector2(452, 256)
 
 [node name="Bloque Azul7" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(617, 256)
+position = Vector2(522, 256)
 
 [node name="Bloque Azul8" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(687, 256)
+position = Vector2(592, 256)
 
 [node name="Bloque Azul9" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(757, 256)
+position = Vector2(662, 256)
 
 [node name="Bloque Azul10" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(827, 256)
-
-[node name="Bloque Azul11" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(897, 256)
-
-[node name="Bloque Azul12" parent="Bloques/Azules/Linea 3" instance=ExtResource("6_o068s")]
-position = Vector2(967, 256)
+position = Vector2(732, 256)
 
 [node name="Amarillos" type="Node2D" parent="Bloques"]
 
 [node name="Linea 1" type="Node" parent="Bloques/Amarillos"]
 
 [node name="Bloque Amarillo" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(197, 196)
+position = Vector2(102, 196)
 
 [node name="Bloque Amarillo2" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(267, 196)
+position = Vector2(172, 196)
 
 [node name="Bloque Amarillo3" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(337, 196)
+position = Vector2(242, 196)
 
 [node name="Bloque Amarillo4" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(407, 196)
+position = Vector2(312, 196)
 
 [node name="Bloque Amarillo5" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(477, 196)
+position = Vector2(382, 196)
 
 [node name="Bloque Amarillo6" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(547, 196)
+position = Vector2(452, 196)
 
 [node name="Bloque Amarillo7" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(617, 196)
+position = Vector2(522, 196)
 
 [node name="Bloque Amarillo8" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(687, 196)
+position = Vector2(592, 196)
 
 [node name="Bloque Amarillo9" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(757, 196)
+position = Vector2(662, 196)
 
 [node name="Bloque Amarillo10" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(827, 196)
-
-[node name="Bloque Amarillo11" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(897, 196)
-
-[node name="Bloque Amarillo12" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("5_b17kn")]
-position = Vector2(967, 196)
+position = Vector2(732, 196)
 
 [node name="Linea 2" type="Node" parent="Bloques/Amarillos"]
 
 [node name="Bloque Amarillo" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(197, 286)
+position = Vector2(102, 286)
 
 [node name="Bloque Amarillo2" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(267, 286)
+position = Vector2(172, 286)
 
 [node name="Bloque Amarillo3" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(337, 286)
+position = Vector2(242, 286)
 
 [node name="Bloque Amarillo4" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(407, 286)
+position = Vector2(312, 286)
 
 [node name="Bloque Amarillo5" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(477, 286)
+position = Vector2(382, 286)
 
 [node name="Bloque Amarillo6" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(547, 286)
+position = Vector2(452, 286)
 
 [node name="Bloque Amarillo7" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(617, 286)
+position = Vector2(522, 286)
 
 [node name="Bloque Amarillo8" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(687, 286)
+position = Vector2(592, 286)
 
 [node name="Bloque Amarillo9" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(757, 286)
+position = Vector2(662, 286)
 
 [node name="Bloque Amarillo10" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(827, 286)
+position = Vector2(732, 286)
 
-[node name="Bloque Amarillo11" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(897, 286)
+[node name="Puntos" type="Label" parent="."]
+offset_left = 920.0
+offset_top = 20.0
+offset_right = 1390.0
+offset_bottom = 64.0
+theme = SubResource("Theme_tekbb")
+text = "{points}"
+horizontal_alignment = 2
+vertical_alignment = 3
 
-[node name="Bloque Amarillo12" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("5_b17kn")]
-position = Vector2(967, 286)
-
-[node name="Label" type="Label" parent="."]
-offset_left = -147.0
-offset_top = 882.0
-offset_right = -96.0
-offset_bottom = 905.0
+[node name="Vidas" type="Label" parent="."]
+offset_left = 1200.0
+offset_top = 80.0
+offset_right = 1380.0
+offset_bottom = 124.0
+theme = SubResource("Theme_tekbb")
+theme_override_font_sizes/font_size = 24
 text = "Vidas: {life}"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="PowerUp" parent="." instance=ExtResource("7_o25am")]
-position = Vector2(315, 84)
-force_type = "Small"
-
-[node name="PowerUp2" parent="." instance=ExtResource("7_o25am")]
-position = Vector2(322, 342)
-force_type = "Large"
+position = Vector2(385, 732)
+force_type = "Contact"

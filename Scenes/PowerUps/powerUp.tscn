@@ -539,19 +539,19 @@ height = 58.0
 [node name="PowerUp" type="Area2D"]
 script = ExtResource("2_866f3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_8ijib")
-vframes = 10
-
 [node name="PowerUpAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_58xtr")
-animation = &"Double"
+animation = &"Large"
 autoplay = "Double"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_t250g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_8ijib")
+vframes = 10
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="." to="." method="_on_ready"]

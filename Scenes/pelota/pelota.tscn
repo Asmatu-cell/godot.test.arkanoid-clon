@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7umm0epvhq0t"]
+[gd_scene load_steps=6 format=3 uid="uid://b7umm0epvhq0t"]
 
 [ext_resource type="Texture2D" uid="uid://610fpns2ywkl" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/ball_blue_small.png" id="1_55xrq"]
 [ext_resource type="Script" path="res://Scenes/pelota/pelota.gd" id="1_cv72r"]
+[ext_resource type="Texture2D" uid="uid://dv4u5fwofcbpr" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/ball_red_large.png" id="2_1rwei"]
 [ext_resource type="AudioStream" uid="uid://dlyplhmhprtsc" path="res://Assets/sounds/BonusCube.ogg" id="3_jh4it"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_omwpm"]
-radius = 15.2971
+radius = 16.1538
 
 [node name="Pelota" type="CharacterBody2D"]
 scale = Vector2(0.65, 0.65)
@@ -18,9 +19,16 @@ script = ExtResource("1_cv72r")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_55xrq")
 
+[node name="BallRedBig" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_1rwei")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_omwpm")
 
 [node name="Rebote" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_jh4it")
 volume_db = -6.0
+
+[connection signal="ball_end_contact" from="." to="." method="_on_ball_end_contact"]
+[connection signal="ball_transform" from="." to="." method="_on_ball_transform"]

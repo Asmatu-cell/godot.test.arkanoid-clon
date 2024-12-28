@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://Scenes/paredes/paredes.gd" id="1_g66gu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibuhm"]
-size = Vector2(35.4767, 57.9058)
+size = Vector2(26.5865, 51.2031)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7yyst"]
-size = Vector2(4.1061, 379.994)
+size = Vector2(3.72668, 288.926)
 
 [node name="Paredes" type="StaticBody2D"]
 position = Vector2(64, 0)
@@ -15,12 +15,13 @@ rotation = 1.5708
 script = ExtResource("1_g66gu")
 
 [node name="ParedFinal" type="CollisionShape2D" parent="."]
-position = Vector2(978.247, -511.842)
+position = Vector2(978.247, -385.971)
 rotation = 3.14159
 scale = Vector2(2.1563, 17.7758)
 shape = SubResource("RectangleShape2D_ibuhm")
 
 [node name="ParedArriba" type="StaticBody2D" parent="."]
+position = Vector2(0.000104904, 30)
 
 [node name="BlockLarge" type="Sprite2D" parent="ParedArriba"]
 position = Vector2(32, -128)
@@ -37,19 +38,16 @@ position = Vector2(32, -640)
 scale = Vector2(0.5, 1)
 texture = ExtResource("1_8gekk")
 
-[node name="BlockLarge4" type="Sprite2D" parent="ParedArriba"]
-position = Vector2(32, -896)
-scale = Vector2(0.5, 1)
-texture = ExtResource("1_8gekk")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedArriba"]
-position = Vector2(54.3201, -498)
+position = Vector2(53.3368, -370.504)
 rotation = 3.14159
 scale = Vector2(5.185, -2.8)
 shape = SubResource("RectangleShape2D_7yyst")
 
 [node name="ParedIzquierda" type="StaticBody2D" parent="."]
+position = Vector2(0.0001086, 30)
 rotation = 1.5708
+scale = Vector2(0.5, 1)
 
 [node name="BlockLarge" type="Sprite2D" parent="ParedIzquierda"]
 position = Vector2(32, -128)
@@ -72,37 +70,38 @@ scale = Vector2(0.5, 1)
 texture = ExtResource("1_8gekk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedIzquierda"]
-position = Vector2(19.0001, -462.095)
+position = Vector2(13.7558, -485.076)
 rotation = 3.14159
 scale = Vector2(0.96, 18.16)
 shape = SubResource("RectangleShape2D_ibuhm")
 
 [node name="ParedDerecha" type="StaticBody2D" parent="."]
-position = Vector2(0, -1088)
+position = Vector2(0, -770)
 rotation = 1.5708
+scale = Vector2(0.5, 1)
 
 [node name="BlockLarge" type="Sprite2D" parent="ParedDerecha"]
-position = Vector2(32, -128)
+position = Vector2(33.9926, -127.997)
 scale = Vector2(0.5, 1)
 texture = ExtResource("1_8gekk")
 
 [node name="BlockLarge2" type="Sprite2D" parent="ParedDerecha"]
-position = Vector2(32, -384)
+position = Vector2(33.9926, -383.997)
 scale = Vector2(0.5, 1)
 texture = ExtResource("1_8gekk")
 
 [node name="BlockLarge3" type="Sprite2D" parent="ParedDerecha"]
-position = Vector2(32, -640)
+position = Vector2(33.9926, -639.997)
 scale = Vector2(0.5, 1)
 texture = ExtResource("1_8gekk")
 
 [node name="BlockLarge4" type="Sprite2D" parent="ParedDerecha"]
-position = Vector2(32, -896)
+position = Vector2(33.9926, -895.997)
 scale = Vector2(0.5, 1)
 texture = ExtResource("1_8gekk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ParedDerecha"]
-position = Vector2(47, -472.427)
+position = Vector2(51.5041, -517.05)
 rotation = 3.14159
 scale = Vector2(0.96, 18.16)
 shape = SubResource("RectangleShape2D_ibuhm")

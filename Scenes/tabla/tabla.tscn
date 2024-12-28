@@ -47,3 +47,4 @@ stream = ExtResource("4_gkuc5")
 stream = ExtResource("5_75orq")
 
 [connection signal="new_ball" from="." to="." method="_on_new_ball"]
+[connection signal="set_contact_mode" from="." to="." method="_on_set_contact_mode"]

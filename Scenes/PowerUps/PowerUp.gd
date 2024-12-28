@@ -1,6 +1,8 @@
 class_name PowerUp
 extends Area2D
 
+const ESCENA_PELOTA = preload("res://Scenes/pelota/pelota.tscn")
+
 @export var force_type = ""
 
 var powerUp = null
@@ -63,15 +65,27 @@ func _process(delta):
 
 # Llamada cuando otro cuerpo entra al área
 func _on_body_entered(body: Node2D) -> void:
-	print(body.name)
+	#print(body.name)
 	if body.name == "Tabla":  # Asegúrate de comparar con el nombre correcto del objeto principal
-		print("Power-up recogido!")
+		print("Power-up recogido!", powerUp)
+		GameController.points_add(150)
+		if GameController.modoDisparo && powerUp["type"] != "Fire":
+			GameController.modoDisparo = false
+		var tabla_obj = body as Tabla
+		tabla_obj.emit_signal("set_contact_mode", false)
 		match powerUp["type"]:
 			"Small", "Large":
 				power_up_change_tabla(body)  # Llama a la función que aumenta el tamaño de la tabla
 			"ExtraLife":
 				power_up_extra_life(body)  # Llama a la función que otorga una vida extra
-			# Añadir más casos según sea necesario
+			"Metal":
+				power_up_metal_ball(body)  # Llama a la función que convierte la bola en destructora
+			"Fire":
+				power_up_fire(body)  # Llama a la función que deja disparar
+			"Contact":
+				power_up_contact(body)  # Llama a la función donde la bola se queda pegada
+			"Double":
+				power_up_double_balls(body)  # Llama a la función que duplica las bolas
 			_:
 				print("Tipo desconocido: ", powerUp)
 		queue_free()  # Elimina el objeto del juego
@@ -97,8 +111,7 @@ func set_animation(animation:String = ""):
 ####	POWER UPS	###
 #######################
 
-func power_up_change_tabla(tabla: Node2D):	
-	print("func power_up_change_tabla: ", tabla)
+func power_up_change_tabla(tabla: Node2D):
 	var tabla_obj = tabla as Tabla
 	var new_width = tabla_obj.base_width_scale * powerUp["scale"]
 	if new_width != tabla.scale.x:		
@@ -107,5 +120,46 @@ func power_up_change_tabla(tabla: Node2D):
 	#tabla.scale.x *= powerUp["scale"]
 	pass
 
+func power_up_metal_ball(tabla: Node2D):
+	get_tree().current_scene.find_children("Pelota*", "", false, false).pick_random().emit_signal("ball_transform")
+	pass
+	
+func power_up_fire(tabla: Node2D):
+	GameController.modoDisparo = true;
+	var tabla_obj = tabla as Tabla
+	tabla_obj.find_child("Shoters Container").visible = true
+	pass
+func power_up_contact(tabla: Node2D):
+	var tabla_obj = tabla as Tabla
+	tabla_obj.emit_signal("set_contact_mode", true)
+	pass
+		
 func power_up_extra_life(tabla: Node2D):
+	GameController.life_changed(+1)
 	print("func otorgar_vida_extra: ", tabla)
+
+func power_up_double_balls(tabla: Node2D):
+	var pelotasActuales = get_tree().current_scene.find_children("Pelota*", "", false, false)
+	var pelotasActualesSize = pelotasActuales.size()
+	if  pelotasActualesSize < 12:
+		for i in pelotasActuales.size():
+			#Instanciamos una nueva pelota
+			var pelotaObject:pelota =  ESCENA_PELOTA.instantiate()
+			pelotaObject.position = pelotasActuales[i].position
+			get_tree().current_scene.add_child(pelotaObject)
+			pelotaObject.velocity = pelotasActuales[i].velocity
+			
+			#Preparamos fuerzas y dirección de esta nueva pelota sobre la otra
+			var n = randf()
+			var n2 = 1 + n
+			pelotaObject.velocity.x = pelotaObject.velocity.x * - n
+			pelotaObject.velocity.y = pelotaObject.velocity.y * - n2
+			pelotaObject.name = "Pelota"
+			
+			#Si ya hay suficientes pelotas, paramos.
+			pelotasActualesSize += 1
+			if  pelotasActualesSize < 12:
+				pass
+		#endfor
+	#endif
+	pass
