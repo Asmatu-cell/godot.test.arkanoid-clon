@@ -16,6 +16,7 @@ motion_mode = 1
 script = ExtResource("1_odv7k")
 
 [node name="Shoters Container" type="Sprite2D" parent="."]
+visible = false
 
 [node name="LaserShooter" type="Sprite2D" parent="Shoters Container"]
 z_index = -1

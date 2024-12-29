@@ -1,26 +1,28 @@
 class_name pelota
 extends CharacterBody2D
 
-@export var SPEED = 350.0
-@export var ACCELERATION_VALUE_STEP = 0.01
-@export var MAX_SPEED_BOOST = 3
+@export var INITIAL_SPEED = 450.0  # Velocidad inicial
+@export var SPEED_INCREMENT = 2.0  # Incremento por golpe
+@export var MAX_SPEED = 900.0  # Velocidad máxima permitida
+@export var CURRENT_SPEED = 0
 
 signal ball_transform
 signal ball_end_contact
 
-var acceleration = 1
 var DESTROYER_MODE = false
 var ON_CONTACT = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-func _ready():
+func _ready():	
 	$BallRedBig.modulate = Color(1, 1, 1, 0)   # Asegurar que el rojo empieza invisible
-	velocity = Vector2(SPEED, 0).rotated(1)	
+	#velocity = Vector2(INITIAL_SPEED, 0).rotated(1)
+	velocity = Vector2(INITIAL_SPEED, 0).rotated(PI / 4)
 
 func _process(delta: float) -> void:
 	if ON_CONTACT == false:
-		$BallBlueSmall.rotate(round(acceleration / delta))
+		pass
+		$BallBlueSmall.rotate(round(velocity.y * PI / delta))
 
 func _physics_process(delta: float) -> void:
 	if ON_CONTACT == false:
@@ -41,12 +43,25 @@ func rebotar(collision: KinematicCollision2D):
 	if DESTROYER_MODE && collision.get_collider().has_signal("hit"):
 		return
 	
+	# Ajustar la dirección tras el rebote
+	velocity = velocity.bounce(collision.get_normal())
 	
-	velocity = velocity.bounce(collision.get_normal())	
-	if acceleration < MAX_SPEED_BOOST:
-		velocity /= acceleration
-		acceleration += ACCELERATION_VALUE_STEP
-		velocity *= acceleration
+		# Calcular el ángulo de la nueva velocidad
+	var angle = velocity.angle()
+	# Definir el ángulo mínimo en radianes (por ejemplo, 15 grados = 0.261799 radianes)
+	var min_angle = deg_to_rad(15)
+
+	# Si el ángulo de la velocidad es menor que el ángulo mínimo, ajustamos la dirección
+	if abs(angle) < min_angle:
+		velocity = velocity.rotated(min_angle * sign(angle)) 
+
+	# Incrementar la velocidad tras el rebote
+	var new_speed = velocity.length() + SPEED_INCREMENT
+	if new_speed > MAX_SPEED:
+		new_speed = MAX_SPEED  # Limitar a velocidad máxima
+
+	CURRENT_SPEED = new_speed
+	velocity = velocity.normalized() * new_speed
 	
 	if collision.get_collider().has_method("is_sticky") && collision.get_collider().call("is_sticky"):
 		ON_CONTACT = true
@@ -55,7 +70,6 @@ func rebotar(collision: KinematicCollision2D):
 	
 	GameController.points_add(1)
 	$Rebote.play()
-	#print("Acceleration of the ball is ", acceleration, velocity)
 
 func _on_ball_transform() -> void:
 	DESTROYER_MODE = true

@@ -4,10 +4,10 @@ extends CharacterBody2D
 const ESCENA_PELOTA = preload("res://Scenes/pelota/pelota.tscn")
 const LASER_BULLET = preload("res://Scenes/tabla/laser_bullet.tscn")
 
-@export var SPEED = 500.0
+@export var SPEED = 600.0
 const PUSH_FORCE = 1000
-const INITIAL_POSITION_X = 548
-const INITIAL_POSITION_Y = 845
+const INITIAL_POSITION_X = 417
+const INITIAL_POSITION_Y = 880
 
 @export var base_width_scale = 1.0
 @export var base_height_scale = 1.0
@@ -61,8 +61,9 @@ func _on_new_ball() -> void:
 func createNewBall():
 	var pelotaObject:pelota =  ESCENA_PELOTA.instantiate()
 	pelotaObject.position = position
-	pelotaObject.position.y -= 10
+	pelotaObject.position.y -= 30
 	get_tree().current_scene.add_child(pelotaObject)
+	pelotaObject.velocity = pelotaObject.velocity.rotated(PI)
 
 
 func reset_positions():	

@@ -50,14 +50,27 @@ var powerUpTypes = {
 	}
 }
 
-func _init(type: String = ""):
+func _init(type: String = "Double"):
 	if type != "" && powerUpTypes.has(type):
 		self.powerUp = powerUpTypes[type]
 	else:
 		randomize()  # Inicializa el generador de números aleatorios		 
 		var keys = powerUpTypes.keys()
 		self.powerUp = powerUpTypes[keys[randi() % keys.size()]]
-
+	
+	#preparamos autodestrucción	
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 5
+	timer.one_shot = true
+	timer.autostart = true
+	
+	# Conectar el temporizador correctamente con un Callable
+	timer.connect("timeout", Callable(self, "_on_powerup_lifetime_timeout"))
+	
+func _on_powerup_lifetime_timeout():
+	queue_free()
+	pass
 
 func _on_ready()-> void:
 	if force_type:
@@ -92,7 +105,7 @@ func _on_body_entered(body: Node2D) -> void:
 			"Contact":
 				power_up_contact(body)  # Llama a la función donde la bola se queda pegada
 			"Double":
-				power_up_double_balls(body)  # Llama a la función que duplica las bolas
+				call_deferred("power_up_double_balls", body)				
 			_:
 				print("Tipo desconocido: ", powerUp)
 		queue_free()  # Elimina el objeto del juego
@@ -153,27 +166,29 @@ func power_up_extra_life(tabla: Node2D):
 	print("func otorgar_vida_extra: ", tabla)
 
 func power_up_double_balls(tabla: Node2D):
-	var pelotasActuales = get_tree().current_scene.find_children("Pelota*", "", false, false)
-	var pelotasActualesSize = pelotasActuales.size()
-	if  pelotasActualesSize < 12:
-		for i in pelotasActuales.size():
-			#Instanciamos una nueva pelota
-			var pelotaObject:pelota =  ESCENA_PELOTA.instantiate()
-			pelotaObject.position = pelotasActuales[i].position
-			get_tree().current_scene.add_child(pelotaObject)
-			pelotaObject.velocity = pelotasActuales[i].velocity
-			
-			#Preparamos fuerzas y dirección de esta nueva pelota sobre la otra
-			var n = randf()
-			var n2 = 1 + n
-			pelotaObject.velocity.x = pelotaObject.velocity.x * - n
-			pelotaObject.velocity.y = pelotaObject.velocity.y * - n2
-			pelotaObject.name = "Pelota"
-			
-			#Si ya hay suficientes pelotas, paramos.
-			pelotasActualesSize += 1
-			if  pelotasActualesSize < 12:
-				pass
+	var pelotas_actuales = get_tree().current_scene.find_children("Pelota*", "", false, false)
+	var pelotas_actuales_size = pelotas_actuales.size()
+
+		# Verificar si hay espacio para duplicar pelotas
+	if pelotas_actuales_size < 12:
+		for pelota_original:pelota in pelotas_actuales:
+			# Verificar si aún podemos añadir más pelotas
+			if pelotas_actuales_size >= 12:
+				break
+
+			# Crear una nueva pelota
+			var nueva_pelota: pelota = ESCENA_PELOTA.instantiate()
+
+			# Configurar posición y velocidad de la nueva pelota
+			nueva_pelota.position = pelota_original.position
+			# Añadir la nueva pelota a la escena
+			get_tree().current_scene.add_child(nueva_pelota)
+			var rotacion_aleatoria = randf_range(-10.0, 10.0)  # Margen aleatorio entre -10 y 10 grados
+			nueva_pelota.velocity = pelota_original.velocity.rotated((PI / 4) + deg_to_rad(rotacion_aleatoria))  # Dirección opuesta con rotación adicional			
+			nueva_pelota.name = "Pelota"
+
+			# Aumentar el contador de pelotas actuales
+			pelotas_actuales_size += 1
 		#endfor
 	#endif
 	pass

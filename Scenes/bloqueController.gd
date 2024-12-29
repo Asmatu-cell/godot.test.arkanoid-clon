@@ -64,6 +64,7 @@ func checkIfPowerUpAppears():
 		
 func create_power_up():
 	var power_up:PowerUp = PowerUpClass.instantiate()
+	power_up.name = "PowerUp_" + power_up.powerUp.type + "_" + str(power_up.get_instance_id())
 	power_up.position = global_position
 	power_up_created.emit(power_up)
 	power_up.connect("power_up_obtained",Callable(last_power_list, "on_powerup_collected"))

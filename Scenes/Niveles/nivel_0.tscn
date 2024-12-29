@@ -34,7 +34,7 @@ zoom = Vector2(0.7, 0.7)
 script = ExtResource("2_sewoi")
 
 [node name="Tabla" parent="." instance=ExtResource("3_nm7ot")]
-position = Vector2(560.87, 880)
+position = Vector2(417, 880)
 scale = Vector2(1, 1)
 
 [node name="Pelota" parent="." instance=ExtResource("4_lovy2")]
