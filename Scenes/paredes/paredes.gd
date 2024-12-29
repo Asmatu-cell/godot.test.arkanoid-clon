@@ -19,5 +19,6 @@ func _on_out() -> void:
 	var pelotasActuales = get_tree().current_scene.find_children("Pelota*", "", false, false)
 	if pelotasActuales.size() == 0 || pelotasActuales.size() == 1:
 		GameController.life_changed(-1)
+		GameController.reset_powers()
 		GameController.create_new_ball()
 	pass

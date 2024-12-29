@@ -53,6 +53,7 @@ func rebotar(collision: KinematicCollision2D):
 		collision.get_collider().call("add_sticked_element", self)		
 		return
 	
+	GameController.points_add(1)
 	$Rebote.play()
 	#print("Acceleration of the ball is ", acceleration, velocity)
 

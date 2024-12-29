@@ -34,6 +34,7 @@ func set_hits(hitNumber:int):
 
 func _on_hit(always_destroy:bool = false) -> void:
 	hits -= 1
+	GameController.points_add(20)
 	if hits < 1 || always_destroy:
 		$AudioBreak.play()
 		visible = false
@@ -52,7 +53,7 @@ func destroy():
 	destroyed = true
 	visible = false
 	position.y = 1000
-	GameController.points_add(25)	
+	GameController.points_add(25)
 
 func checkIfPowerUpAppears():
 	var aleatorio = randf()

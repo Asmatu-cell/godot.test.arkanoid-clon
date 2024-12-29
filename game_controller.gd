@@ -25,9 +25,14 @@ func _process(delta: float) -> void:
 	var disparado = Input.is_action_just_pressed("disparo")
 	
 	if disparado && modoDisparo:
-		disparar()		
+		disparar()
 	pass
-	
+
+func reset_powers():
+	modoDisparo = false
+	tablaActual.find_child("Shoters Container").visible = false
+	tablaActual.emit_signal("set_contact_mode", false)
+		
 func points_add(points_to_add:int) -> void:	
 	points += points_to_add
 	labelPuntos.text = str(points)
@@ -37,7 +42,7 @@ func life_changed(qty:int) -> void:
 	labelVidas.text = "Vidas: " + str(life)
 	
 	if life <= 0:
-		labelVidas.text ="HAS PERDIDO"	
+		labelVidas.text = "HAS PERDIDO"
 	pass
 
 func create_new_ball() -> void:
@@ -45,3 +50,4 @@ func create_new_ball() -> void:
 
 func disparar() -> void:
 	print("hemos disparado")
+	tablaActual.emit_signal("disparar")

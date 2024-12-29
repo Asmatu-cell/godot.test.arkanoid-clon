@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8gu4c0hduxbe"]
+[gd_scene load_steps=7 format=3 uid="uid://b8gu4c0hduxbe"]
 
 [ext_resource type="Script" path="res://Scenes/tabla/tabla.gd" id="1_odv7k"]
 [ext_resource type="Texture2D" uid="uid://4dj2pgs7w464" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser.png" id="1_ywqq3"]
 [ext_resource type="Texture2D" uid="uid://gc6wjccvo2cl" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser_shooter.png" id="2_m38ub"]
-[ext_resource type="PackedScene" uid="uid://dbjdg5jldafqw" path="res://Scenes/tabla/laser_bullet.tscn" id="3_x43xg"]
 [ext_resource type="AudioStream" uid="uid://5ghupy0kg4co" path="res://Assets/sounds/nes sounds/coin.ogg" id="4_gkuc5"]
 [ext_resource type="AudioStream" uid="uid://7a4dethp2ikh" path="res://Assets/sounds/nes sounds/bounce_back.ogg" id="5_75orq"]
 
@@ -16,6 +15,7 @@ motion_mode = 1
 script = ExtResource("1_odv7k")
 
 [node name="Shoters Container" type="Sprite2D" parent="."]
+visible = false
 
 [node name="LaserShooter" type="Sprite2D" parent="Shoters Container"]
 z_index = -1
@@ -29,7 +29,8 @@ position = Vector2(-90, -9)
 scale = Vector2(0.351, 0.351)
 texture = ExtResource("2_m38ub")
 
-[node name="LaserBullet" parent="Shoters Container/LaserShooter2" instance=ExtResource("3_x43xg")]
+[node name="RayCast2D" type="RayCast2D" parent="Shoters Container"]
+target_position = Vector2(0, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

@@ -78,10 +78,8 @@ func _on_body_entered(body: Node2D) -> void:
 		print("Power-up recogido!", powerUp)
 		power_up_obtained.emit(self)
 		GameController.points_add(150)
-		if GameController.modoDisparo && powerUp["type"] != "Fire":
-			GameController.modoDisparo = false
-		var tabla_obj = body as Tabla
-		tabla_obj.emit_signal("set_contact_mode", false)
+		GameController.reset_powers()
+		
 		match powerUp["type"]:
 			"Small", "Large":
 				power_up_change_tabla(body)  # Llama a la función que aumenta el tamaño de la tabla
@@ -135,7 +133,9 @@ func power_up_change_tabla(tabla: Node2D):
 	pass
 
 func power_up_metal_ball(tabla: Node2D):
-	get_tree().current_scene.find_children("Pelota*", "", false, false).pick_random().emit_signal("ball_transform")
+	var bola = get_tree().current_scene.find_children("Pelota*", "", false, false).pick_random()
+	if bola:
+		bola.emit_signal("ball_transform")
 	pass
 	
 func power_up_fire(tabla: Node2D):
