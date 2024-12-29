@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp78noj6cujwu"]
+
+[ext_resource type="Script" path="res://Ui/v_box_powerUpContainer.gd" id="1_7nm5o"]
+[ext_resource type="Texture2D" uid="uid://cud5xdt66phtw" path="res://Assets/kenney_rolling-ball-assets/PNG/Default/background_brown.png" id="1_k7txm"]
+[ext_resource type="Texture2D" uid="uid://gn1b2yhlein6" path="res://Assets/powerups/simples/contact.png" id="2_jhte7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sj6nh"]
+line_spacing = 2.0
+font_size = 12
+shadow_size = 2
+
+[node name="VBoxContainerPowerUp" type="Panel"]
+custom_minimum_size = Vector2(100, 45)
+script = ExtResource("1_7nm5o")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k7txm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+texture = ExtResource("2_jhte7")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Metal"
+label_settings = SubResource("LabelSettings_sj6nh")
+horizontal_alignment = 1

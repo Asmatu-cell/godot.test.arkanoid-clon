@@ -2,6 +2,7 @@ class_name PowerUp
 extends Area2D
 
 const ESCENA_PELOTA = preload("res://Scenes/pelota/pelota.tscn")
+signal power_up_obtained(item:PowerUp)
 
 @export var force_type = ""
 
@@ -12,33 +13,40 @@ var powerUpTypes = {
 	"Large": {
 		"type": "Large",	
 		"speed": 150,
-		"scale": 1.5
+		"scale": 1.5,
+		"image_url": "res://Assets/powerups/simples/large.png"
 	},
 	"Small": {
 		"type": "Small",
 		"speed": 150,
-		"scale": 0.5
+		"scale": 0.5,
+		"image_url": "res://Assets/powerups/simples/small.png"
 	},
 	"ExtraLife": {
 		"type": "ExtraLife",
 		"animation": "Extra",
-		"speed": 150
+		"speed": 150,
+		"image_url": "res://Assets/powerups/simples/extra.png"
 	},
 	"Contact": {
 		"type": "Contact",
-		"speed": 150
+		"speed": 150,
+		"image_url": "res://Assets/powerups/simples/contact.png"
 	},
 	"Double": {
 		"type": "Double",
-		"speed": 150
+		"speed": 150,
+		"image_url": "res://Assets/powerups/simples/double.png"
 	},
 	"Fire": {
 		"type": "Fire",
-		"speed": 150
+		"speed": 150,
+		"image_url": "res://Assets/powerups/simples/fire.png"
 	},
 	"Metal": {
 		"type": "Metal",
-		"speed": 150
+		"speed": 150,
+		"image_url": "res://Assets/powerups/simples/metal.png"
 	}
 }
 
@@ -68,6 +76,7 @@ func _on_body_entered(body: Node2D) -> void:
 	#print(body.name)
 	if body.name == "Tabla":  # Asegúrate de comparar con el nombre correcto del objeto principal
 		print("Power-up recogido!", powerUp)
+		power_up_obtained.emit(self)
 		GameController.points_add(150)
 		if GameController.modoDisparo && powerUp["type"] != "Fire":
 			GameController.modoDisparo = false
@@ -106,6 +115,11 @@ func set_animation(animation:String = ""):
 
 	print("func set_animation: ", animation, newAnimation)
 	$PowerUpAnimation.animation = newAnimation
+
+func get_texture() -> CompressedTexture2D:	
+	var image_path =  powerUp["image_url"]
+	var compressed_texture = load(image_path)  # Preload te garantiza que la textura se cargue como comprimida
+	return compressed_texture 
 
 #######################
 ####	POWER UPS	###

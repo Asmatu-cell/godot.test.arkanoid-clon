@@ -2,8 +2,11 @@ extends StaticBody2D
 class_name bloqueController
 
 signal hit
+signal power_up_created(powerup:PowerUp)
 
 const PowerUpClass = preload("res://Scenes/PowerUps/powerUp.tscn")
+@onready var last_power_list: PanelContainer = null
+
 
 var cooldown = 1
 var destroyed = false
@@ -11,11 +14,11 @@ var destroyed = false
 @export var SPRITE_FOLDER_BASE = "bloques"
 @export var SPRITE_BASE = "block-"
 @export var BLOCK_FOLDER = ""
-@export var POWER_UP_PROBABILITY: float = 0.25
+@export var POWER_UP_PROBABILITY: float = 0.2
 @export var POWER_UP_TYPE: String = ""
 
-
 func _ready() -> void:
+	last_power_list = get_tree().current_scene.find_children("LastPowerList").pick_random()
 	pass	
 
 func _physics_process(delta):
@@ -37,18 +40,19 @@ func _on_hit(always_destroy:bool = false) -> void:
 		destroy()
 	else:		
 		$AudioHit.play()
-		var sprite = str("res://assets/" + SPRITE_FOLDER_BASE + "/" + BLOCK_FOLDER + "/", SPRITE_BASE + str(hits), ".png")
+		var sprite = str("res://Assets/" + SPRITE_FOLDER_BASE + "/" + BLOCK_FOLDER + "/", SPRITE_BASE + str(hits), ".png")
 		if (sprite):
-			get_node("Sprite2D").texture = load(sprite)
+			var texture = ResourceLoader.load(sprite)
+			get_node("Sprite2D").texture = texture
 			
 	pass # Replace with function body.
 
-func destroy():	
+func destroy():
 	checkIfPowerUpAppears()
 	destroyed = true
 	visible = false
 	position.y = 1000
-	GameController.points_add(25)
+	GameController.points_add(25)	
 
 func checkIfPowerUpAppears():
 	var aleatorio = randf()
@@ -59,5 +63,7 @@ func checkIfPowerUpAppears():
 		
 func create_power_up():
 	var power_up:PowerUp = PowerUpClass.instantiate()
-	power_up.position = position
+	power_up.position = global_position
+	power_up_created.emit(power_up)
+	power_up.connect("power_up_obtained",Callable(last_power_list, "on_powerup_collected"))
 	get_tree().current_scene.add_child(power_up)
