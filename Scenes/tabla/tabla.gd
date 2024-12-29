@@ -18,15 +18,15 @@ signal set_contact_mode()
 
 var sticked_balls: = []
 
-func _physics_process(delta):	 
+func _physics_process(delta):
 	if Input.is_action_just_pressed("disparo") && sticked_balls.size() > 0:
-		for i in sticked_balls.size():
-			sticked_balls[i].emit_signal("ball_end_contact")
+		for ball in sticked_balls:
+			ball.emit_signal("ball_end_contact")
 			pass
 		sticked_balls = []
 		
 	# Obtener la dirección del input horizontal
-	var direction = Input.get_axis("lpad", "rpad")		
+	var direction = Input.get_axis("lpad", "rpad")
 	# Manejar movimiento horizontal y desaceleración
 	if direction != 0:
 		velocity.x = direction * SPEED
@@ -38,8 +38,15 @@ func _physics_process(delta):
 		scale.x = lerp(scale.x, new_width_scale, transition_elapsed_time)
 		if (new_width_scale > base_width_scale && scale.x > new_width_scale) || (new_width_scale < base_width_scale && scale.x < new_width_scale):
 			scale.x = new_width_scale
+
 	# Mover el personaje usando la velocidad
+	var previous_position = global_position  # Guarda la posición actual antes de mover
 	move_and_slide()
+	var movement_delta = global_position - previous_position  # Calcula cuánto se ha movido
+
+	# Mover las bolas pegadas junto a la tabla
+	for ball in sticked_balls:
+		ball.global_position += movement_delta
 
 func _on_new_ball() -> void:
 	await explosion()

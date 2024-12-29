@@ -19,7 +19,8 @@ func _ready():
 	velocity = Vector2(SPEED, 0).rotated(1)	
 
 func _process(delta: float) -> void:
-	$BallBlueSmall.rotate(round(acceleration / delta))
+	if ON_CONTACT == false:
+		$BallBlueSmall.rotate(round(acceleration / delta))
 
 func _physics_process(delta: float) -> void:
 	if ON_CONTACT == false:
