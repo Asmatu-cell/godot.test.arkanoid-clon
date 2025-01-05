@@ -50,7 +50,8 @@ var powerUpTypes = {
 	}
 }
 
-func _init(type: String = "Double"):
+func _init(type: String = ""):
+	add_to_group("power_ups")
 	if type != "" && powerUpTypes.has(type):
 		self.powerUp = powerUpTypes[type]
 	else:
@@ -88,7 +89,7 @@ func _process(delta):
 func _on_body_entered(body: Node2D) -> void:
 	#print(body.name)
 	if body.name == "Tabla":  # Asegúrate de comparar con el nombre correcto del objeto principal
-		print("Power-up recogido!", powerUp)
+		#print("Power-up recogido!", powerUp)
 		power_up_obtained.emit(self)
 		GameController.points_add(150)
 		GameController.reset_powers()

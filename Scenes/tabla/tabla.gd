@@ -6,7 +6,7 @@ const LASER_BULLET = preload("res://Scenes/tabla/laser_bullet.tscn")
 
 @export var SPEED = 600.0
 const PUSH_FORCE = 1000
-const INITIAL_POSITION_X = 417
+const INITIAL_POSITION_X = 420
 const INITIAL_POSITION_Y = 880
 
 @export var base_width_scale = 1.0
@@ -22,6 +22,9 @@ signal disparar()
 var sticked_balls: = []
 var already_shot = false
 
+func _ready() -> void:
+	reset_positions()
+	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("disparo") && sticked_balls.size() > 0:
 		for ball in sticked_balls:

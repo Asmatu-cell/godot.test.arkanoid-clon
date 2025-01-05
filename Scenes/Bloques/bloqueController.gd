@@ -7,18 +7,18 @@ signal power_up_created(powerup:PowerUp)
 const PowerUpClass = preload("res://Scenes/PowerUps/powerUp.tscn")
 @onready var last_power_list: PanelContainer = null
 
-
 var cooldown = 1
 var destroyed = false
 @export var hits = 1
 @export var SPRITE_FOLDER_BASE = "bloques"
 @export var SPRITE_BASE = "block-"
 @export var BLOCK_FOLDER = ""
-@export var POWER_UP_PROBABILITY: float = 0.2
+@export var POWER_UP_PROBABILITY: float = 0.15
 @export var POWER_UP_TYPE: String = ""
 
 func _ready() -> void:
-	last_power_list = get_tree().current_scene.find_children("LastPowerList").pick_random()
+	last_power_list = get_tree().current_scene.find_children("LastPowerList").pick_random()	
+	add_to_group("bloques_destruibles")
 	pass	
 
 func _physics_process(delta):
@@ -26,7 +26,7 @@ func _physics_process(delta):
 		cooldown -= delta
 		if cooldown <= 0:
 			queue_free()
-			cooldown = 1.0
+			cooldown = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func set_hits(hitNumber:int):
@@ -38,7 +38,7 @@ func _on_hit(always_destroy:bool = false) -> void:
 	if hits < 1 || always_destroy:
 		$AudioBreak.play()
 		visible = false
-		destroy()
+		prepare_to_destroy()
 	else:		
 		$AudioHit.play()
 		var sprite = str("res://Assets/" + SPRITE_FOLDER_BASE + "/" + BLOCK_FOLDER + "/", SPRITE_BASE + str(hits), ".png")
@@ -48,24 +48,27 @@ func _on_hit(always_destroy:bool = false) -> void:
 			
 	pass # Replace with function body.
 
-func destroy():
+func prepare_to_destroy():
+	GameController.points_add(25)	
+	visible = false
+	remove_from_group("bloques_destruibles")
+	GameController.check_remaining_blocks_for_next_level()
 	checkIfPowerUpAppears()
 	destroyed = true
-	visible = false
 	position.y = 1000
-	GameController.points_add(25)
 
 func checkIfPowerUpAppears():
 	var aleatorio = randf()
-	print("Trying to create PowerUP ",  aleatorio)
+	#print("Trying to create PowerUP ",  aleatorio)
 	# Si el número aleatorio es menor o igual a la probabilidad, se realiza la acción	
 	if aleatorio <= POWER_UP_PROBABILITY:
-		create_power_up()
+		call_deferred("create_power_up", global_position)
 		
-func create_power_up():
+func create_power_up(my_position):
 	var power_up:PowerUp = PowerUpClass.instantiate()
 	power_up.name = "PowerUp_" + power_up.powerUp.type + "_" + str(power_up.get_instance_id())
-	power_up.position = global_position
+	power_up.position = my_position
 	power_up_created.emit(power_up)
-	power_up.connect("power_up_obtained",Callable(last_power_list, "on_powerup_collected"))
-	get_tree().current_scene.add_child(power_up)
+	power_up.connect("power_up_obtained",Callable(last_power_list, "on_powerup_collected"))	
+	if get_tree() && get_tree().current_scene:
+		get_tree().current_scene.add_child(power_up)

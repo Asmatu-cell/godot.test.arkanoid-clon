@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3n5i0n8v8kds"]
+
+[ext_resource type="Script" path="res://Scenes/Niveles/nivel_a.gd" id="1_adlus"]
+[ext_resource type="PackedScene" uid="uid://do4fx8tyf7nmr" path="res://Scenes/UI/game_ui.tscn" id="1_bm6h2"]
+[ext_resource type="PackedScene" uid="uid://cmnxmea36b686" path="res://Scenes/paredes/paredes.tscn" id="2_ljtjm"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="3_aes8m"]
+[ext_resource type="PackedScene" uid="uid://cm6eh8e2jhm88" path="res://Scenes/Bloques/bloque_rosa.tscn" id="4_dq3qn"]
+[ext_resource type="PackedScene" uid="uid://dhe0aqb311uvx" path="res://Scenes/Bloques/bloque_amarillo.tscn" id="5_bpvq4"]
+[ext_resource type="PackedScene" uid="uid://bqs2wamsewn58" path="res://Scenes/Bloques/bloque_azul.tscn" id="6_3av2c"]
+
+[node name="Nivel A" type="Node2D"]
+script = ExtResource("1_adlus")
+metadata/_edit_horizontal_guides_ = [420.0, 390.0, 360.0, 660.0]
+metadata/_edit_vertical_guides_ = [28.0, 800.0]
+
+[node name="game_ui" parent="." instance=ExtResource("1_bm6h2")]
+metadata/_edit_lock_ = true
+
+[node name="Paredes" parent="." instance=ExtResource("2_ljtjm")]
+position = Vector2(62, 0)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Paredes"]
+position = Vector2(-1.99999, 302)
+rotation = -1.5708
+anchor_mode = 0
+zoom = Vector2(0.7, 0.7)
+script = ExtResource("3_aes8m")
+
+[node name="Bloques" type="Node" parent="."]
+
+[node name="linea 1" type="Node2D" parent="Bloques"]
+position = Vector2(105, 630)
+
+[node name="Bloque Rosa" parent="Bloques/linea 1" instance=ExtResource("4_dq3qn")]
+position = Vector2(658, 15)
+scale = Vector2(1.04414, 1)
+
+[node name="Bloque Amarillo" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(-42, 15)
+
+[node name="Bloque Amarillo2" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(28, 15)
+
+[node name="Bloque Amarillo3" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(98, 15)
+
+[node name="Bloque Amarillo4" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(168, 15)
+
+[node name="Bloque Amarillo5" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(238, 15)
+
+[node name="Bloque Amarillo6" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(308, 15)
+
+[node name="Bloque Amarillo7" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(378, 15)
+
+[node name="Bloque Amarillo8" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(448, 15)
+
+[node name="Bloque Amarillo9" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(518, 15)
+
+[node name="Bloque Amarillo10" parent="Bloques/linea 1" instance=ExtResource("5_bpvq4")]
+position = Vector2(588, 15)
+
+[node name="linea 2" type="Node2D" parent="Bloques"]
+position = Vector2(63, 615)
+
+[node name="Bloque Azul" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+
+[node name="Bloque Azul2" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+position = Vector2(70, 0)
+
+[node name="Bloque Azul3" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+position = Vector2(140, 0)
+
+[node name="Bloque Azul4" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+position = Vector2(210, 0)
+
+[node name="Bloque Azul5" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+position = Vector2(280, 0)
+
+[node name="Bloque Azul6" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+position = Vector2(350, 0)
+
+[node name="Bloque Azul7" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+position = Vector2(420, 0)
+
+[node name="Bloque Azul8" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+position = Vector2(490, 0)
+
+[node name="Bloque Azul9" parent="Bloques/linea 2" instance=ExtResource("6_3av2c")]
+position = Vector2(560, 0)
+
+[node name="linea 3" type="Node2D" parent="Bloques"]
+position = Vector2(63, 585)
+
+[node name="Bloque Azul" parent="Bloques/linea 3" instance=ExtResource("6_3av2c")]
+
+[node name="Bloque Azul2" parent="Bloques/linea 3" instance=ExtResource("6_3av2c")]
+position = Vector2(70, 0)
+
+[node name="Bloque Azul3" parent="Bloques/linea 3" instance=ExtResource("6_3av2c")]
+position = Vector2(140, 0)
+
+[node name="Bloque Azul4" parent="Bloques/linea 3" instance=ExtResource("6_3av2c")]
+position = Vector2(210, 0)
+
+[node name="Bloque Azul5" parent="Bloques/linea 3" instance=ExtResource("6_3av2c")]
+position = Vector2(280, 0)
+
+[node name="Bloque Azul6" parent="Bloques/linea 3" instance=ExtResource("6_3av2c")]
+position = Vector2(350, 0)
+
+[node name="Bloque Azul7" parent="Bloques/linea 3" instance=ExtResource("6_3av2c")]
+position = Vector2(420, 0)
+
+[node name="linea 4" type="Node2D" parent="Bloques"]
+
+[node name="linea 5" type="Node2D" parent="Bloques"]

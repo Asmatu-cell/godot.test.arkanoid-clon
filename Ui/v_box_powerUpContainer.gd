@@ -1,7 +1,7 @@
 class_name vBoxContainerPowerUp extends Panel
 
 
-func initialize (texture:CompressedTexture2D, name:String):
+func initialize (texture:CompressedTexture2D, powerUpName:String):
 	$TextureRect.texture = texture
-	$Label.text = name
+	$Label.text = powerUpName
 	pass

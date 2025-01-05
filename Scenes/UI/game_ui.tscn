@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://do4fx8tyf7nmr"]
+
+[ext_resource type="Script" path="res://Scenes/Niveles/LastPowerList.gd" id="1_f40i0"]
+
+[sub_resource type="Theme" id="Theme_tekbb"]
+Label/font_sizes/font_size = 30
+Label/fonts/font = null
+
+[sub_resource type="LabelSettings" id="LabelSettings_tglsm"]
+font_size = 20
+font_color = Color(0.0745098, 0.627451, 0.341176, 1)
+outline_size = 1
+outline_color = Color(0.00224735, 0.438447, 0.208054, 1)
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 1)
+
+[node name="game_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Vidas" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1204.0
+offset_top = 858.0
+offset_right = 1384.0
+offset_bottom = 902.0
+theme = SubResource("Theme_tekbb")
+theme_override_font_sizes/font_size = 24
+text = "Vidas: {life}"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Puntos" type="Label" parent="."]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 20.0
+offset_right = 1390.0
+offset_bottom = 64.0
+theme = SubResource("Theme_tekbb")
+text = "{points}"
+horizontal_alignment = 2
+vertical_alignment = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1015.0
+offset_top = 120.0
+offset_right = 1225.0
+offset_bottom = 324.0
+
+[node name="LastPowerList" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 168.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f40i0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/LastPowerList"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Label" type="Label" parent="Control/LastPowerList/VBoxContainer"]
+layout_mode = 2
+text = "Last Power-Ups"
+label_settings = SubResource("LabelSettings_tglsm")
+horizontal_alignment = 1
+uppercase = true
