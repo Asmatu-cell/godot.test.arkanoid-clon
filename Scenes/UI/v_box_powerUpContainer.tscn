@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dp78noj6cujwu"]
 
-[ext_resource type="Script" path="res://Ui/v_box_powerUpContainer.gd" id="1_7nm5o"]
+[ext_resource type="Script" path="res://Scenes/UI/v_box_powerUpContainer.gd" id="1_7nm5o"]
 [ext_resource type="Texture2D" uid="uid://cud5xdt66phtw" path="res://Assets/kenney_rolling-ball-assets/PNG/Default/background_brown.png" id="1_k7txm"]
 [ext_resource type="Texture2D" uid="uid://gn1b2yhlein6" path="res://Assets/powerups/simples/contact.png" id="2_jhte7"]
 

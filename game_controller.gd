@@ -10,9 +10,15 @@ var labelPuntos:Label
 var modoDisparo:bool = false
 var tablaActual
 
+var level = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	level_init()	
+	#level_init()	
+	pass
+
+func get_current_level() -> int:
+	return level
 
 func level_init():
 	var current_scene =	get_tree().current_scene
@@ -20,8 +26,8 @@ func level_init():
 	tablaActual.name = "Tabla"
 	current_scene.add_child(tablaActual)	
 	tablaActual.call("createNewBall")
-	
-	init_ui()	
+	if current_scene.name != "Main Menu":
+		init_ui()		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,7 +43,7 @@ func reset_powers():
 	tablaActual.emit_signal("set_contact_mode", false)
 
 func init_ui():
-	var current_scene =	get_tree().current_scene
+	var current_scene =	get_tree().current_scene	
 	labelVidas = current_scene.find_children("Vidas", "", true, false)[0]	
 	labelPuntos = current_scene.find_children("Puntos", "", true, false)[0]		
 	labelVidas.text = "Vidas: " + str(life)
@@ -75,5 +81,6 @@ func check_remaining_blocks_for_next_level():
 func change_scene_to_next() -> void:	
 	#get_tree().change_scene_to_packed()
 	points_add(500)
-	get_tree().change_scene_to_file("res://Scenes/Niveles/nivel_a.tscn")
+	level += 1
+	get_tree().change_scene_to_file("res://Scenes/UI/new_level_screen.tscn")
 	pass

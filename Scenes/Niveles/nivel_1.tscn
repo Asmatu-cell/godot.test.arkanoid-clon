@@ -1,14 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6ung2w2syfqp"]
 
 [ext_resource type="PackedScene" uid="uid://cmnxmea36b686" path="res://Scenes/paredes/paredes.tscn" id="1_3j3ef"]
+[ext_resource type="Script" path="res://Scenes/Niveles/nivel_1.gd" id="1_hgqoi"]
 [ext_resource type="PackedScene" uid="uid://do4fx8tyf7nmr" path="res://Scenes/UI/game_ui.tscn" id="1_ph6eu"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="2_sewoi"]
-[ext_resource type="PackedScene" uid="uid://b7umm0epvhq0t" path="res://Scenes/pelota/pelota.tscn" id="4_lovy2"]
 [ext_resource type="PackedScene" uid="uid://dhe0aqb311uvx" path="res://Scenes/Bloques/bloque_amarillo.tscn" id="5_b17kn"]
 [ext_resource type="PackedScene" uid="uid://bqs2wamsewn58" path="res://Scenes/Bloques/bloque_azul.tscn" id="6_o068s"]
 [ext_resource type="PackedScene" uid="uid://dpsv18r1xkri5" path="res://Scenes/PowerUps/powerUp.tscn" id="8_6eof7"]
 
-[node name="Nivel 0" type="Node2D"]
+[node name="Nivel 1" type="Node2D"]
+script = ExtResource("1_hgqoi")
 metadata/_edit_lock_ = true
 
 [node name="game_ui" parent="." instance=ExtResource("1_ph6eu")]
@@ -22,9 +23,6 @@ rotation = -1.5708
 anchor_mode = 0
 zoom = Vector2(0.7, 0.7)
 script = ExtResource("2_sewoi")
-
-[node name="Pelota" parent="." instance=ExtResource("4_lovy2")]
-position = Vector2(133, 624)
 
 [node name="Bloques" type="Node" parent="."]
 

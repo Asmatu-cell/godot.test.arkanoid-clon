@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmqifwhpfjtpr"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Main Menu.gd" id="1_lo2ap"]
+[ext_resource type="Texture2D" uid="uid://dy4pbif5j5swx" path="res://Assets/nave-retro-fondo.webp" id="2_xnpwp"]
+[ext_resource type="Texture2D" uid="uid://datp37tmuou27" path="res://Assets/retro-space.jpg" id="3_deive"]
+[ext_resource type="PackedScene" uid="uid://jt35h2qpjbp7" path="res://Scenes/UI/fade_transition.tscn" id="3_o87ce"]
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_lo2ap")
+
+[node name="nave-retro" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(439, 378)
+scale = Vector2(0.79643, 0.835857)
+texture = ExtResource("2_xnpwp")
+
+[node name="Retro-space" type="Sprite2D" parent="."]
+position = Vector2(548.378, 371)
+scale = Vector2(0.687037, 0.687037)
+texture = ExtResource("3_deive")
+
+[node name="Button_manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 270.0
+offset_right = 1050.0
+offset_bottom = 360.0
+text = "Start game"
+
+[node name="Options" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 390.0
+offset_right = 1050.0
+offset_bottom = 480.0
+text = "options"
+
+[node name="Quit" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 777.0
+offset_top = 516.0
+offset_right = 1050.0
+offset_bottom = 606.0
+text = "Quit
+"
+
+[node name="Fade_transition" parent="." instance=ExtResource("3_o87ce")]
+visible = false
+
+[node name="fade_timer" type="Timer" parent="Fade_transition"]
+
+[connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button_manager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Button_manager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="Fade_transition/fade_timer" to="." method="_on_fade_timer_timeout"]

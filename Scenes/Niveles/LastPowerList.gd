@@ -1,5 +1,5 @@
 extends PanelContainer
-const V_BOX_POWER_UP_CONTAINER = preload("res://Ui/v_box_powerUpContainer.tscn")
+const V_BOX_POWER_UP_CONTAINER = preload("res://Scenes/UI/v_box_powerUpContainer.tscn")
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
