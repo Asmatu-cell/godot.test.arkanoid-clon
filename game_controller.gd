@@ -3,7 +3,7 @@ extends Node
 
 const TABLA = preload("res://Scenes/tabla/tabla.tscn")
 
-@export var life = 3
+@export var life = 1
 @export var points = 0
 var labelVidas:Label
 var labelPuntos:Label
@@ -37,6 +37,21 @@ func _process(delta: float) -> void:
 		disparar()
 	pass
 
+func game_over():
+	labelVidas.text = "HAS PERDIDO"
+	tablaActual.emit_signal("explotar")
+	await get_tree().create_timer(3).timeout	
+	get_tree().change_scene_to_file("res://Scenes/UI/game_over_scene.tscn")
+
+func destroy_ball():
+	life_changed(-1)
+	clean_powerups()
+	reset_powers()
+	if life <= 0:
+		game_over()
+	else:
+		create_new_ball()
+	
 func reset_powers():
 	modoDisparo = false
 	tablaActual.find_child("Shoters Container").visible = false
@@ -62,8 +77,6 @@ func life_changed(qty:int) -> void:
 	life += qty;
 	labelVidas.text = "Vidas: " + str(life)
 	
-	if life <= 0:
-		labelVidas.text = "HAS PERDIDO"
 	pass
 
 func create_new_ball() -> void:

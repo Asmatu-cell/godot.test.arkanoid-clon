@@ -386,4 +386,4 @@ position = Vector2(732, 342)
 
 [node name="PowerUp" parent="." instance=ExtResource("8_6eof7")]
 position = Vector2(364, 588)
-force_type = "Metal"
+force_type = "Fire"

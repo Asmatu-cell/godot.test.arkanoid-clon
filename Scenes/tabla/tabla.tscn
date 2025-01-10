@@ -1,14 +1,127 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8gu4c0hduxbe"]
+[gd_scene load_steps=11 format=3 uid="uid://b8gu4c0hduxbe"]
 
 [ext_resource type="Script" path="res://Scenes/tabla/tabla.gd" id="1_odv7k"]
 [ext_resource type="Texture2D" uid="uid://4dj2pgs7w464" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser.png" id="1_ywqq3"]
 [ext_resource type="Texture2D" uid="uid://gc6wjccvo2cl" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser_shooter.png" id="2_m38ub"]
 [ext_resource type="PackedScene" uid="uid://dbjdg5jldafqw" path="res://Scenes/tabla/laser_bullet.tscn" id="3_x43xg"]
 [ext_resource type="AudioStream" uid="uid://5ghupy0kg4co" path="res://Assets/sounds/nes sounds/coin.ogg" id="4_gkuc5"]
-[ext_resource type="AudioStream" uid="uid://7a4dethp2ikh" path="res://Assets/sounds/nes sounds/bounce_back.ogg" id="5_75orq"]
+[ext_resource type="AudioStream" uid="uid://dnd1ca63r0jk5" path="res://Assets/sounds/nes sounds/bomb.ogg" id="6_ur7in"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdy0h"]
 size = Vector2(46, 59.5)
+
+[sub_resource type="Gradient" id="Gradient_c0ai3"]
+offsets = PackedFloat32Array(0, 0.241071, 0.991071, 1)
+colors = PackedColorArray(0.831373, 0.882353, 0.890196, 1, 0.989461, 0.992647, 0.993137, 1, 0.930922, 0.245769, 0.40012, 1, 0.752941, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_hamig"]
+resource_name = "explosion"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/Laser:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.85, 1.2, 1.25, 1.35),
+"transitions": PackedFloat32Array(1, 3.13833, 1, 1, 0.482968),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.92549, 0, 0.0705882, 1), Color(0.941176, 0.176471, 0.235294, 1), Color(0.651668, 0.118019, 0.175007, 1), Color(0.941176, 0.176471, 0.235294, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D/Laser:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, 0), Vector2(0, 5), Vector2(0, -5), Vector2(1, -5), Vector2(-2.5, 5), Vector2(0, -5), Vector2(0, 0), Vector2(-4, 0), Vector2(1, 2), Vector2(-2.5, -1), Vector2(0, 1), Vector2(1, -1), Vector2(-4, -4), Vector2(2, 2), Vector2(-5, -4), Vector2(-1, 1), Vector2(1, -1), Vector2(1, 1), Vector2(5, 2), Vector2(7, -5), Vector2(0, 0), Vector2(0, 0), Vector2(-6.70552e-08, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D/Laser:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioExplosion")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 1.36903,
+"start_offset": 0.070705,
+"stream": ExtResource("6_ur7in")
+}],
+"times": PackedFloat32Array(1.2)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shoters Container:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.05, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 7.05883)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shoters Container:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.65, 1), Vector2(0.65, 1), Vector2(0.65, 0.25)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Shoters Container:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ot5ru"]
+_data = {
+"explosion": SubResource("Animation_hamig")
+}
 
 [node name="Tabla" type="CharacterBody2D"]
 scale = Vector2(0.9, 0.9)
@@ -17,6 +130,7 @@ script = ExtResource("1_odv7k")
 
 [node name="Shoters Container" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.65, 1)
 
 [node name="LaserShooter" type="Sprite2D" parent="Shoters Container"]
 z_index = -1
@@ -39,7 +153,7 @@ shape = SubResource("RectangleShape2D_wdy0h")
 one_way_collision_margin = 2.0
 
 [node name="Laser" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(-6.70552e-08, 0)
+position = Vector2(-5, 0)
 scale = Vector2(2, 0.25)
 texture = ExtResource("1_ywqq3")
 
@@ -47,8 +161,67 @@ texture = ExtResource("1_ywqq3")
 stream = ExtResource("4_gkuc5")
 
 [node name="AudioExplosion" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_75orq")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture_filter = 1
+emitting = false
+amount = 30
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_rect_extents = Vector2(20, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 120.0
+initial_velocity_max = 300.0
+radial_accel_min = 2.0
+radial_accel_max = 3.0
+scale_amount_min = 3.0
+scale_amount_max = 10.0
+color = Color(0.831373, 0.882353, 0.890196, 1)
+color_ramp = SubResource("Gradient_c0ai3")
+hue_variation_max = 0.6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ot5ru")
+}
+
+[node name="Button_manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 270.0
+offset_right = 1050.0
+offset_bottom = 360.0
+text = "Start game"
+
+[node name="Options" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 390.0
+offset_right = 1050.0
+offset_bottom = 480.0
+text = "options"
+
+[node name="Quit" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 777.0
+offset_top = 516.0
+offset_right = 1050.0
+offset_bottom = 606.0
+text = "Quit
+"
 
 [connection signal="disparar" from="." to="." method="_on_disparar"]
+[connection signal="explotar" from="." to="." method="_on_explotar"]
 [connection signal="new_ball" from="." to="." method="_on_new_ball"]
 [connection signal="set_contact_mode" from="." to="." method="_on_set_contact_mode"]

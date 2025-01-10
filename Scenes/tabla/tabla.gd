@@ -18,6 +18,7 @@ var transition_elapsed_time = 0.0
 signal new_ball(qty)
 signal set_contact_mode()
 signal disparar()
+signal explotar()
 
 var sticked_balls: = []
 var already_shot = false
@@ -113,3 +114,8 @@ func _on_proyectil_hit(body):
 	already_shot = false
 	if body.has_signal("hit"):
 		body.emit_signal("hit")
+
+
+func _on_explotar() -> void:	
+	$AnimationPlayer.play("explosion")
+	pass # Replace with function body.
