@@ -20,8 +20,7 @@ func _ready():
 	velocity = Vector2(INITIAL_SPEED, 0).rotated(PI / 4)
 
 func _process(delta: float) -> void:
-	if ON_CONTACT == false:
-		pass
+	if ON_CONTACT == false:		
 		$BallBlueSmall.rotate(round(velocity.y * PI / delta))
 
 func _physics_process(delta: float) -> void:
@@ -43,33 +42,58 @@ func rebotar(collision: KinematicCollision2D):
 	if DESTROYER_MODE && collision.get_collider().has_signal("hit"):
 		return
 	
-	# Ajustar la dirección tras el rebote
-	velocity = velocity.bounce(collision.get_normal())
+	# Diferente comportamiento de rebote según con qué choque
+	var collider = collision.get_collider()
+	if (collider.name == "Tabla"):
+		rebotar_en_tabla(collision)
+	else:
+		rebotar_en_otro(collision)
 	
-		# Calcular el ángulo de la nueva velocidad
-	var angle = velocity.angle()
-	# Definir el ángulo mínimo en radianes (por ejemplo, 15 grados = 0.261799 radianes)
-	var min_angle = deg_to_rad(15)
-
-	# Si el ángulo de la velocidad es menor que el ángulo mínimo, ajustamos la dirección
-	if abs(angle) < min_angle:
-		velocity = velocity.rotated(min_angle * sign(angle)) 
-
 	# Incrementar la velocidad tras el rebote
-	var new_speed = velocity.length() + SPEED_INCREMENT
-	if new_speed > MAX_SPEED:
-		new_speed = MAX_SPEED  # Limitar a velocidad máxima
-
-	CURRENT_SPEED = new_speed
-	velocity = velocity.normalized() * new_speed
+	ajustar_velocidad()
 	
 	if collision.get_collider().has_method("is_sticky") && collision.get_collider().call("is_sticky"):
 		ON_CONTACT = true
 		collision.get_collider().call("add_sticked_element", self)		
 		return
-	
-	GameController.points_add(1)
+
 	$Rebote.play()
+
+func rebotar_en_tabla(collision: KinematicCollision2D):
+	GameController.points_add(5)
+	var tabla:CharacterBody2D = collision.get_collider()
+	var collision_shape = tabla.get_node("CollisionShape2D")
+
+	var width = collision_shape.shape.extents.y * collision_shape.scale.y * 2 * tabla.scale.x  # Ajusta por la escala
+
+	# Calcula la posición relativa del impacto (-1 para borde izquierdo, 1 para borde derecho)
+	var relative_contact = (position.x - tabla.position.x) / (width / 2)
+	
+	# Calcula el ángulo de rebote
+	var base_angle = deg_to_rad(90)  # Rebote hacia arriba
+	var angle_offset = deg_to_rad(45) * relative_contact *-1 # Ajuste basado en el impacto relativo
+	var new_angle = base_angle + angle_offset
+
+# Actualiza la velocidad con el nuevo ángulo
+	velocity = velocity.length() * Vector2(cos(new_angle), -sin(new_angle))
+
+# Información de depuración
+	print("relative_contact: ", relative_contact,
+		" new_angle: ", rad_to_deg(new_angle),
+		" velocity: ", velocity)
+		
+func rebotar_en_otro(collision: KinematicCollision2D):
+	# Ajustar la dirección tras el rebote
+	velocity = velocity.bounce(collision.get_normal())
+	
+	# Calcular el ángulo de la nueva velocidad
+	var angle = velocity.angle()	
+	var min_angle = deg_to_rad(15)
+
+	# Si el ángulo de la velocidad es menor que el ángulo mínimo, ajustamos la dirección
+	if abs(angle) < min_angle:
+		velocity = velocity.rotated(min_angle * sign(angle))
+	pass
 
 func _on_ball_transform() -> void:
 	DESTROYER_MODE = true
@@ -89,7 +113,7 @@ func _on_ball_transform() -> void:
 		$CollisionShape2D.scale.y = 1.5 + 0.55 * t
 		await get_tree().process_frame
 	
-	print("Transición completada")	
+	#print("Transición completada")	
 	await get_tree().process_frame
 		
 	await _return_ball_to_normal(2.5)
@@ -114,7 +138,15 @@ func _return_ball_to_normal(delay_seconds: float = 0) -> void:
 		await get_tree().process_frame
 	#endwhile
 
-
 func _on_ball_end_contact() -> void:
 	ON_CONTACT = false
 	pass # Replace with function body.
+	
+
+func ajustar_velocidad():
+	var new_speed = velocity.length() + SPEED_INCREMENT
+	if new_speed > MAX_SPEED:
+		new_speed = MAX_SPEED  # Limitar a velocidad máxima
+	CURRENT_SPEED = new_speed
+	
+	velocity = velocity.normalized() * new_speed

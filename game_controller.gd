@@ -86,8 +86,7 @@ func disparar() -> void:
 	tablaActual.emit_signal("disparar")
 
 func check_remaining_blocks_for_next_level():	
-	var remaining_blocks = get_tree().get_nodes_in_group("bloques_destruibles")
-	print(remaining_blocks.size())
+	var remaining_blocks = get_tree().get_nodes_in_group("bloques_destruibles")	
 	if (remaining_blocks.size() < 1):		
 		GameController.change_scene_to_next()
 	

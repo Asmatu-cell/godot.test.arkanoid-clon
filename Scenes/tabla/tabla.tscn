@@ -7,8 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://5ghupy0kg4co" path="res://Assets/sounds/nes sounds/coin.ogg" id="4_gkuc5"]
 [ext_resource type="AudioStream" uid="uid://dnd1ca63r0jk5" path="res://Assets/sounds/nes sounds/bomb.ogg" id="6_ur7in"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdy0h"]
-size = Vector2(46, 59.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s21tl"]
+size = Vector2(46, 60)
 
 [sub_resource type="Gradient" id="Gradient_c0ai3"]
 offsets = PackedFloat32Array(0, 0.241071, 0.991071, 1)
@@ -148,12 +148,11 @@ texture = ExtResource("2_m38ub")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-scale = Vector2(0.4, -2.75)
-shape = SubResource("RectangleShape2D_wdy0h")
+scale = Vector2(0.4, 2.75)
+shape = SubResource("RectangleShape2D_s21tl")
 one_way_collision_margin = 2.0
 
 [node name="Laser" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(-5, 0)
 scale = Vector2(2, 0.25)
 texture = ExtResource("1_ywqq3")
 

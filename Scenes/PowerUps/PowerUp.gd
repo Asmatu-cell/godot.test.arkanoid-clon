@@ -125,7 +125,7 @@ func set_animation(animation:String = ""):
 	if animation != "":
 		newAnimation = animation
 
-	print("func set_animation: ", animation, newAnimation)
+	#print("func set_animation: ", animation, newAnimation)
 	$PowerUpAnimation.animation = newAnimation
 
 func get_texture() -> CompressedTexture2D:	
@@ -140,7 +140,7 @@ func get_texture() -> CompressedTexture2D:
 func power_up_change_tabla(tabla: Node2D):
 	var tabla_obj = tabla as Tabla
 	var new_width = tabla_obj.base_width_scale * powerUp["scale"]
-	if new_width != tabla.scale.x:		
+	if new_width != tabla.scale.x:
 		tabla_obj.transition_elapsed_time = 0
 		tabla_obj.new_width_scale = new_width
 	#tabla.scale.x *= powerUp["scale"]
