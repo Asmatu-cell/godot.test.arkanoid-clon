@@ -32,7 +32,7 @@ position = Vector2(160, 224)
 position = Vector2(264, 224)
 
 [node name="Bloque Rosa" parent="Node" instance=ExtResource("6_or3lc")]
-position = Vector2(408, 240)
+position = Vector2(360, 425)
 
 [node name="Bloque Rosa2" parent="Node/Bloque Rosa" instance=ExtResource("6_or3lc")]
 position = Vector2(-224, 104)
