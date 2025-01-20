@@ -10,11 +10,10 @@
 [node name="Nivel 3" type="Node2D"]
 
 [node name="game_ui" parent="." instance=ExtResource("1_swl1n")]
-metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Paredes" parent="." instance=ExtResource("2_cls0r")]
-position = Vector2(62, 0)
-metadata/_edit_lock_ = true
+position = Vector2(-104, 256)
 
 [node name="Camera2D" type="Camera2D" parent="Paredes"]
 position = Vector2(-1.99999, 302)
