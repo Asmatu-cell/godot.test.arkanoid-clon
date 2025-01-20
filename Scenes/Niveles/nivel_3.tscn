@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsh8tsp3oh1eg"]
+
+[ext_resource type="PackedScene" uid="uid://do4fx8tyf7nmr" path="res://Scenes/UI/game_ui.tscn" id="1_swl1n"]
+[ext_resource type="PackedScene" uid="uid://cmnxmea36b686" path="res://Scenes/paredes/paredes.tscn" id="2_cls0r"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="3_0gf5v"]
+[ext_resource type="PackedScene" uid="uid://dhe0aqb311uvx" path="res://Scenes/Bloques/bloque_amarillo.tscn" id="4_pk1fy"]
+[ext_resource type="PackedScene" uid="uid://bqs2wamsewn58" path="res://Scenes/Bloques/bloque_azul.tscn" id="5_jedvf"]
+[ext_resource type="PackedScene" uid="uid://cm6eh8e2jhm88" path="res://Scenes/Bloques/bloque_rosa.tscn" id="6_or3lc"]
+
+[node name="Nivel 3" type="Node2D"]
+
+[node name="game_ui" parent="." instance=ExtResource("1_swl1n")]
+metadata/_edit_lock_ = true
+
+[node name="Paredes" parent="." instance=ExtResource("2_cls0r")]
+position = Vector2(62, 0)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Paredes"]
+position = Vector2(-1.99999, 302)
+rotation = -1.5708
+anchor_mode = 0
+zoom = Vector2(0.7, 0.7)
+script = ExtResource("3_0gf5v")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Bloque Amarillo" parent="Node" instance=ExtResource("4_pk1fy")]
+position = Vector2(160, 224)
+
+[node name="Bloque Azul" parent="Node" instance=ExtResource("5_jedvf")]
+position = Vector2(264, 224)
+
+[node name="Bloque Rosa" parent="Node" instance=ExtResource("6_or3lc")]
+position = Vector2(408, 240)
+
+[node name="Bloque Rosa2" parent="Node/Bloque Rosa" instance=ExtResource("6_or3lc")]
+position = Vector2(-224, 104)
+
+[node name="Bloque Rosa3" parent="Node/Bloque Rosa" instance=ExtResource("6_or3lc")]
+position = Vector2(-120, 48)
+
+[node name="Bloque Amarillo2" parent="Node/Bloque Rosa" instance=ExtResource("4_pk1fy")]
+position = Vector2(-32, -104)
