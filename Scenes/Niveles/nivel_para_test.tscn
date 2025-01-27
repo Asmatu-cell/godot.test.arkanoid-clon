@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://hwe1qdrqp4wj"]
+
+[ext_resource type="Script" path="res://Scenes/Niveles/nivel_1.gd" id="1_yu3fi"]
+[ext_resource type="PackedScene" uid="uid://do4fx8tyf7nmr" path="res://Scenes/UI/game_ui.tscn" id="2_w02e8"]
+[ext_resource type="PackedScene" uid="uid://cmnxmea36b686" path="res://Scenes/paredes/paredes.tscn" id="3_3edoo"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="4_bryiv"]
+[ext_resource type="PackedScene" uid="uid://bqs2wamsewn58" path="res://Scenes/Bloques/bloque_azul.tscn" id="5_jsofd"]
+[ext_resource type="PackedScene" uid="uid://dhe0aqb311uvx" path="res://Scenes/Bloques/bloque_amarillo.tscn" id="6_0v5sb"]
+[ext_resource type="PackedScene" uid="uid://dtx7xlqd5o78w" path="res://Scenes/Aliens/alien_1.tscn" id="8_q0eg7"]
+[ext_resource type="PackedScene" uid="uid://b7umm0epvhq0t" path="res://Scenes/pelota/pelota.tscn" id="9_2d0sa"]
+[ext_resource type="PackedScene" uid="uid://lr4jrrswdjf" path="res://Scenes/Aliens/alien_spawner.tscn" id="9_qmds2"]
+
+[node name="Nivel 1" type="Node2D"]
+script = ExtResource("1_yu3fi")
+metadata/_edit_lock_ = true
+
+[node name="game_ui" parent="." instance=ExtResource("2_w02e8")]
+
+[node name="Paredes" parent="." instance=ExtResource("3_3edoo")]
+position = Vector2(62, 0)
+
+[node name="Camera2D" type="Camera2D" parent="Paredes"]
+position = Vector2(-1.99999, 302)
+rotation = -1.5708
+anchor_mode = 0
+zoom = Vector2(0.7, 0.7)
+script = ExtResource("4_bryiv")
+
+[node name="Bloques" type="Node" parent="."]
+
+[node name="Azules" type="Node2D" parent="Bloques"]
+
+[node name="Linea 2" type="Node2D" parent="Bloques/Azules"]
+
+[node name="Bloque Azul" parent="Bloques/Azules/Linea 2" instance=ExtResource("5_jsofd")]
+position = Vector2(385, 378)
+hits = 111
+
+[node name="Bloque Azul2" parent="Bloques/Azules/Linea 2" instance=ExtResource("5_jsofd")]
+position = Vector2(455, 378)
+
+[node name="Bloque Azul3" parent="Bloques/Azules/Linea 2" instance=ExtResource("5_jsofd")]
+position = Vector2(525, 378)
+hits = 11
+
+[node name="Bloque Azul4" parent="Bloques/Azules/Linea 2" instance=ExtResource("5_jsofd")]
+position = Vector2(595, 378)
+
+[node name="Bloque Azul5" parent="Bloques/Azules/Linea 2" instance=ExtResource("5_jsofd")]
+position = Vector2(665, 378)
+hits = 33
+
+[node name="Amarillos" type="Node2D" parent="Bloques"]
+
+[node name="Linea 2" type="Node" parent="Bloques/Amarillos"]
+
+[node name="Bloque Amarillo" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("6_0v5sb")]
+position = Vector2(102, 286)
+
+[node name="Bloque Amarillo2" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("6_0v5sb")]
+position = Vector2(172, 286)
+
+[node name="Bloque Amarillo3" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("6_0v5sb")]
+position = Vector2(242, 286)
+
+[node name="Bloque Amarillo4" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("6_0v5sb")]
+position = Vector2(312, 286)
+hits = 22
+
+[node name="Bloque Amarillo5" parent="Bloques/Amarillos/Linea 2" instance=ExtResource("6_0v5sb")]
+position = Vector2(382, 286)
+
+[node name="Pelota" parent="." instance=ExtResource("9_2d0sa")]
+position = Vector2(231, 606)
+
+[node name="Pelota2" parent="." instance=ExtResource("9_2d0sa")]
+position = Vector2(546, 630)
+
+[node name="Alien" parent="." instance=ExtResource("8_q0eg7")]
+position = Vector2(556, 216)
+
+[node name="Alien2" parent="." instance=ExtResource("8_q0eg7")]
+position = Vector2(651, 558)
+speed = 5
+
+[node name="Paredes4" parent="." instance=ExtResource("3_3edoo")]
+position = Vector2(35, 744)
+
+[node name="Camera2D" type="Camera2D" parent="Paredes4"]
+position = Vector2(-1.99999, 302)
+rotation = -1.5708
+anchor_mode = 0
+zoom = Vector2(0.7, 0.7)
+script = ExtResource("4_bryiv")
+
+[node name="Alien3" parent="." instance=ExtResource("8_q0eg7")]
+position = Vector2(168, 360)
+speed = 15
+
+[node name="Alien4" parent="." instance=ExtResource("8_q0eg7")]
+position = Vector2(98, 558)
+speed = 20
+
+[node name="AlienSpawner" parent="." instance=ExtResource("9_qmds2")]
+position = Vector2(385, 60)
