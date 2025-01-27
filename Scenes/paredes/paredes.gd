@@ -7,14 +7,6 @@ signal out
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	# var pelotasActuales = get_tree().current_scene.find_children("Pelota*", "", false, false)
-	# if pelotasActuales.size() == 0:
-	#	print("HAS PERDIDO")	
-	pass
-
 func _on_out() -> void:	
 	var pelotasActuales = get_tree().current_scene.find_children("Pelota*", "", false, false)
 	if pelotasActuales.size() == 0 || pelotasActuales.size() == 1:

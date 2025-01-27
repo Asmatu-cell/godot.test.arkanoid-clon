@@ -537,6 +537,7 @@ radius = 12.0
 height = 58.0
 
 [node name="PowerUp" type="Area2D"]
+collision_layer = 16
 script = ExtResource("2_866f3")
 
 [node name="PowerUpAnimation" type="AnimatedSprite2D" parent="."]

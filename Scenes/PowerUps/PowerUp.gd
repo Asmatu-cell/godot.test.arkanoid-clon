@@ -146,7 +146,7 @@ func power_up_change_tabla(tabla: Node2D):
 	#tabla.scale.x *= powerUp["scale"]
 	pass
 
-func power_up_metal_ball(tabla: Node2D):
+func power_up_metal_ball(_tabla: Node2D):
 	var bola = get_tree().current_scene.find_children("Pelota*", "", false, false).pick_random()
 	if bola:
 		bola.emit_signal("ball_transform")
@@ -166,7 +166,7 @@ func power_up_extra_life(tabla: Node2D):
 	GameController.life_changed(+1)
 	print("func otorgar_vida_extra: ", tabla)
 
-func power_up_double_balls(tabla: Node2D):
+func power_up_double_balls(_tabla: Node2D):
 	var pelotas_actuales = get_tree().current_scene.find_children("Pelota*", "", false, false)
 	var pelotas_actuales_size = pelotas_actuales.size()
 

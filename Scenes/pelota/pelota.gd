@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 			golpear(collision)
 
 func golpear(collision: KinematicCollision2D):
-	var collider = collision.get_collider()
+	var collider = collision.get_collider()		
 	if collider.has_signal("hit"):
 		collider.emit_signal("hit", DESTROYER_MODE)
 	if collider.has_signal("out"):
@@ -76,20 +76,20 @@ func rebotar_en_tabla(collision: KinematicCollision2D):
 
 # Actualiza la velocidad con el nuevo ángulo
 	velocity = velocity.length() * Vector2(cos(new_angle), -sin(new_angle))
+	#print("rebotar_en_tabla - relative_contact: ", relative_contact," new_angle: ", rad_to_deg(new_angle)," velocity: ", velocity)
 
-# Información de depuración
-	print("relative_contact: ", relative_contact,
-		" new_angle: ", rad_to_deg(new_angle),
-		" velocity: ", velocity)
-		
 func rebotar_en_otro(collision: KinematicCollision2D):
 	# Ajustar la dirección tras el rebote
 	velocity = velocity.bounce(collision.get_normal())
 	
 	# Calcular el ángulo de la nueva velocidad
 	var angle = velocity.angle()	
-	var min_angle = deg_to_rad(15)
-
+	var min_angle = deg_to_rad(15)	
+	if rad_to_deg(angle) > 85 && rad_to_deg(angle) < 95:		
+		print("angles Pelota - ", abs(angle), " ", rad_to_deg(angle), " ",  abs(min_angle))
+		randomize()
+		velocity = velocity.rotated(deg_to_rad(randi_range(-5,5)))
+				
 	# Si el ángulo de la velocidad es menor que el ángulo mínimo, ajustamos la dirección
 	if abs(angle) < min_angle:
 		velocity = velocity.rotated(min_angle * sign(angle))
@@ -141,7 +141,6 @@ func _return_ball_to_normal(delay_seconds: float = 0) -> void:
 func _on_ball_end_contact() -> void:
 	ON_CONTACT = false
 	pass # Replace with function body.
-	
 
 func ajustar_velocidad():
 	var new_speed = velocity.length() + SPEED_INCREMENT

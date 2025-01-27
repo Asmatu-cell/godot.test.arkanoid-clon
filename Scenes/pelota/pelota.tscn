@@ -11,6 +11,7 @@ radius = 16.1538
 [node name="Pelota" type="CharacterBody2D"]
 scale = Vector2(0.65, 0.65)
 collision_layer = 2
+collision_mask = 9
 motion_mode = 1
 platform_on_leave = 1
 script = ExtResource("1_cv72r")

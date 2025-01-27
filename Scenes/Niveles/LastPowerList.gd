@@ -7,10 +7,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func add_item(item:PowerUp) -> void:
 	var power_up_item = V_BOX_POWER_UP_CONTAINER.instantiate()
 	power_up_item.initialize(item.get_texture(), item.powerUp.type)
