@@ -190,37 +190,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ot5ru")
 }
 
-[node name="Button_manager" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Start" type="Button" parent="Button_manager"]
-layout_mode = 0
-offset_left = 770.0
-offset_top = 270.0
-offset_right = 1050.0
-offset_bottom = 360.0
-text = "Start game"
-
-[node name="Options" type="Button" parent="Button_manager"]
-layout_mode = 0
-offset_left = 770.0
-offset_top = 390.0
-offset_right = 1050.0
-offset_bottom = 480.0
-text = "options"
-
-[node name="Quit" type="Button" parent="Button_manager"]
-layout_mode = 0
-offset_left = 777.0
-offset_top = 516.0
-offset_right = 1050.0
-offset_bottom = 606.0
-text = "Quit
-"
-
 [connection signal="disparar" from="." to="." method="_on_disparar"]
 [connection signal="explotar" from="." to="." method="_on_explotar"]
 [connection signal="new_ball" from="." to="." method="_on_new_ball"]
