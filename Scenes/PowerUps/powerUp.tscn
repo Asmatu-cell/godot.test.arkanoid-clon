@@ -1,8 +1,9 @@
-[gd_scene load_steps=76 format=3 uid="uid://dpsv18r1xkri5"]
+[gd_scene load_steps=80 format=3 uid="uid://dpsv18r1xkri5"]
 
 [ext_resource type="Texture2D" uid="uid://dl5paufw8rnxu" path="res://Assets/powerups/LARGE.png" id="1_8ijib"]
 [ext_resource type="Script" path="res://Scenes/PowerUps/PowerUp.gd" id="2_866f3"]
 [ext_resource type="Texture2D" uid="uid://c7kw1mj8ljx5a" path="res://Assets/powerups/BONUS.png" id="2_dfm24"]
+[ext_resource type="Texture2D" uid="uid://lb2kmpe8iqy7" path="res://Assets/image/briks.png" id="4_y5ncf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_811b7"]
 atlas = ExtResource("2_dfm24")
@@ -284,6 +285,18 @@ region = Rect2(180, 200, 60, 25)
 atlas = ExtResource("2_dfm24")
 region = Rect2(180, 225, 60, 25)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vneqi"]
+atlas = ExtResource("4_y5ncf")
+region = Rect2(0, 0, 70, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p5bf"]
+atlas = ExtResource("4_y5ncf")
+region = Rect2(70, 0, 70, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfym7"]
+atlas = ExtResource("4_y5ncf")
+region = Rect2(140, 0, 70, 30)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_58xtr"]
 animations = [{
 "frames": [{
@@ -530,6 +543,20 @@ animations = [{
 "loop": true,
 "name": &"Small",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vneqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p5bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfym7")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t250g"]
@@ -537,13 +564,14 @@ radius = 12.0
 height = 58.0
 
 [node name="PowerUp" type="Area2D"]
-collision_layer = 16
 script = ExtResource("2_866f3")
 
 [node name="PowerUpAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_58xtr")
-animation = &"Large"
+animation = &"new_animation"
 autoplay = "Double"
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708

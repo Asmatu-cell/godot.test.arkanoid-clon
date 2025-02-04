@@ -49,7 +49,6 @@ position = Vector2(1080, -1460)
 shape = SubResource("RectangleShape2D_gu81f")
 
 [node name="Game-layer" type="Sprite2D" parent="."]
-z_index = -500
 position = Vector2(960, 540)
 texture = ExtResource("2_wdygo")
 

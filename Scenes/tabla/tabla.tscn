@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8gu4c0hduxbe"]
+[gd_scene load_steps=15 format=3 uid="uid://b8gu4c0hduxbe"]
 
 [ext_resource type="Script" path="res://Scenes/tabla/tabla.gd" id="1_odv7k"]
 [ext_resource type="Texture2D" uid="uid://gc6wjccvo2cl" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser_shooter.png" id="2_m38ub"]
@@ -12,12 +12,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s21tl"]
 size = Vector2(142.222, 17.7778)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eyg6"]
-size = Vector2(182.222, 17.7778)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uoy7k"]
-size = Vector2(102.222, 17.7778)
 
 [sub_resource type="Gradient" id="Gradient_c0ai3"]
 offsets = PackedFloat32Array(0, 0.241071, 0.991071, 1)
@@ -46,10 +40,10 @@ tracks/1/path = NodePath("CollisionShape2D/barra:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.85, 1.2, 1.25, 1.35),
-"transitions": PackedFloat32Array(1, 3.13833, 1, 1, 0.482968),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.92549, 0, 0.0705882, 1), Color(0.941176, 0.176471, 0.235294, 1), Color(0.651668, 0.118019, 0.175007, 1), Color(0.941176, 0.176471, 0.235294, 0)]
+"values": []
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -61,7 +55,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.35),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-5, 0), Vector2(0, 5), Vector2(0, -5), Vector2(1, -5), Vector2(-2.5, 5), Vector2(0, -5), Vector2(0, 0), Vector2(-4, 0), Vector2(1, 2), Vector2(-2.5, -1), Vector2(0, 1), Vector2(1, -1), Vector2(-4, -4), Vector2(2, 2), Vector2(-5, -4), Vector2(-1, 1), Vector2(1, -1), Vector2(1, 1), Vector2(5, 2), Vector2(7, -5), Vector2(0, 0), Vector2(0, 0), Vector2(-6.70552e-08, 0)]
+"values": [Vector2(0, 0), Vector2(0, 5), Vector2(0, -5), Vector2(1, -5), Vector2(-2.5, 5), Vector2(0, -5), Vector2(0, 0), Vector2(-4, 0), Vector2(1, 2), Vector2(-2.5, -1), Vector2(0, 1), Vector2(1, -1), Vector2(-4, -4), Vector2(2, 2), Vector2(-5, -4), Vector2(-1, 1), Vector2(1, -1), Vector2(1, 1), Vector2(5, 2), Vector2(7, -5), Vector2(0, 0), Vector2(0, 0), Vector2(-6.70552e-08, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -70,10 +64,10 @@ tracks/3/path = NodePath("CollisionShape2D/barra:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.85, 1.2, 1.25, 1.35),
+"transitions": PackedFloat32Array(1, 3.13833, 1, 1, 0.482968),
 "update": 0,
-"values": []
+"values": [Color(1, 1, 1, 1), Color(0.92549, 0, 0.0705882, 1), Color(0.941176, 0.176471, 0.235294, 1), Color(0.651668, 0.118019, 0.175007, 1), Color(0.941176, 0.176471, 0.235294, 0)]
 }
 tracks/4/type = "audio"
 tracks/4/imported = false
@@ -127,14 +121,42 @@ tracks/7/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_bu745"]
+resource_name = "crecer"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/barra:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 6.9644),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D/barra-long:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.297302),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ot5ru"]
 _data = {
+"crecer": SubResource("Animation_bu745"),
 "explosion": SubResource("Animation_hamig")
 }
 
 [node name="Tabla" type="CharacterBody2D"]
-scale = Vector2(0.9, 0.9)
-collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_odv7k")
 
@@ -169,20 +191,12 @@ visible = false
 position = Vector2(0, -5.55556)
 texture = ExtResource("5_s4nox")
 
-[node name="CollisionShape_Long" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_5eyg6")
-one_way_collision_margin = 2.0
-
-[node name="barra-long" type="Sprite2D" parent="CollisionShape_Long"]
+[node name="barra-long" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(1, 1, 1, 0)
 texture = ExtResource("6_0bss7")
 
-[node name="CollisionShape_Short" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_uoy7k")
-one_way_collision_margin = 2.0
-
-[node name="barra-short" type="Sprite2D" parent="CollisionShape_Short"]
+[node name="barra-short" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(1, 1, 1, 0)
 texture = ExtResource("7_aubu3")
 
 [node name="AudioReset" type="AudioStreamPlayer2D" parent="."]
@@ -219,41 +233,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ot5ru")
 }
 
-<<<<<<< Updated upstream
-=======
-[node name="Button_manager" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_lock_ = true
-
-[node name="Start" type="Button" parent="Button_manager"]
-layout_mode = 0
-offset_left = 770.0
-offset_top = 270.0
-offset_right = 1050.0
-offset_bottom = 360.0
-text = "Start game"
-
-[node name="Options" type="Button" parent="Button_manager"]
-layout_mode = 0
-offset_left = 770.0
-offset_top = 390.0
-offset_right = 1050.0
-offset_bottom = 480.0
-text = "options"
-
-[node name="Quit" type="Button" parent="Button_manager"]
-layout_mode = 0
-offset_left = 777.0
-offset_top = 516.0
-offset_right = 1050.0
-offset_bottom = 606.0
-text = "Quit
-"
-
->>>>>>> Stashed changes
 [connection signal="disparar" from="." to="." method="_on_disparar"]
 [connection signal="explotar" from="." to="." method="_on_explotar"]
 [connection signal="new_ball" from="." to="." method="_on_new_ball"]

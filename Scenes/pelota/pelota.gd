@@ -133,8 +133,8 @@ func _return_ball_to_normal(delay_seconds: float = 0) -> void:
 		var t = timer
 		$BallRedBig.modulate.a = 1.0 - t
 		$BallBlueSmall.modulate.a = t
-		$BallBlueSmall.scale.x = 1.5 - (1 * t)
-		$BallBlueSmall.scale.y = 1.5 - (1 * t)
+		$BallBlueSmall.scale.x = 2 - (1 * t)
+		$BallBlueSmall.scale.y = 2 - (1 * t)
 		await get_tree().process_frame
 	#endwhile
 
