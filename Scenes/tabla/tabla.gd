@@ -6,8 +6,8 @@ const LASER_BULLET = preload("res://Scenes/tabla/laser_bullet.tscn")
 
 @export var SPEED = 600.0
 const PUSH_FORCE = 1000
-const INITIAL_POSITION_X = 420
-const INITIAL_POSITION_Y = 880
+const INITIAL_POSITION_X = 960
+const INITIAL_POSITION_Y = 1020
 
 @export var base_width_scale = 1.0
 @export var base_height_scale = 1.0

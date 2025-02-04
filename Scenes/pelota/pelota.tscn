@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7umm0epvhq0t"]
 
-[ext_resource type="Texture2D" uid="uid://610fpns2ywkl" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/ball_blue_small.png" id="1_55xrq"]
 [ext_resource type="Script" path="res://Scenes/pelota/pelota.gd" id="1_cv72r"]
-[ext_resource type="Texture2D" uid="uid://dv4u5fwofcbpr" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/ball_red_large.png" id="2_1rwei"]
+[ext_resource type="Texture2D" uid="uid://cp2ts21l48se4" path="res://Assets/image/ball.png" id="2_it6nx"]
+[ext_resource type="Texture2D" uid="uid://cvlpwjhhkwmwi" path="res://Assets/image/ball-broker.png" id="3_ah1aa"]
 [ext_resource type="AudioStream" uid="uid://dlyplhmhprtsc" path="res://Assets/sounds/BonusCube.ogg" id="3_jh4it"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_omwpm"]
-radius = 16.1538
+radius = 7.69231
 
 [node name="Pelota" type="CharacterBody2D"]
 scale = Vector2(0.65, 0.65)
@@ -17,12 +17,11 @@ platform_on_leave = 1
 script = ExtResource("1_cv72r")
 
 [node name="BallBlueSmall" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_55xrq")
+z_index = 800
+texture = ExtResource("2_it6nx")
 
 [node name="BallRedBig" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_1rwei")
+texture = ExtResource("3_ah1aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_omwpm")
