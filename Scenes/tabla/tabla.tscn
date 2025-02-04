@@ -1,14 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8gu4c0hduxbe"]
+[gd_scene load_steps=16 format=3 uid="uid://b8gu4c0hduxbe"]
 
 [ext_resource type="Script" path="res://Scenes/tabla/tabla.gd" id="1_odv7k"]
-[ext_resource type="Texture2D" uid="uid://4dj2pgs7w464" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser.png" id="1_ywqq3"]
 [ext_resource type="Texture2D" uid="uid://gc6wjccvo2cl" path="res://Assets/kenney_rolling-ball-assets/PNG/Retina/laser_shooter.png" id="2_m38ub"]
 [ext_resource type="PackedScene" uid="uid://dbjdg5jldafqw" path="res://Scenes/tabla/laser_bullet.tscn" id="3_x43xg"]
 [ext_resource type="AudioStream" uid="uid://5ghupy0kg4co" path="res://Assets/sounds/nes sounds/coin.ogg" id="4_gkuc5"]
+[ext_resource type="Texture2D" uid="uid://dvtdqkmtmd8xv" path="res://Assets/image/barra.png" id="4_w14eg"]
+[ext_resource type="Texture2D" uid="uid://dv5ucdhqy50ds" path="res://Assets/image/barra-shooter.png" id="5_s4nox"]
+[ext_resource type="Texture2D" uid="uid://tmgjgk7a4vq7" path="res://Assets/image/barra-long.png" id="6_0bss7"]
 [ext_resource type="AudioStream" uid="uid://dnd1ca63r0jk5" path="res://Assets/sounds/nes sounds/bomb.ogg" id="6_ur7in"]
+[ext_resource type="Texture2D" uid="uid://7j2j32lh74ta" path="res://Assets/image/barra-short.png" id="7_aubu3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s21tl"]
-size = Vector2(46, 60)
+size = Vector2(142.222, 17.7778)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eyg6"]
+size = Vector2(182.222, 17.7778)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uoy7k"]
+size = Vector2(102.222, 17.7778)
 
 [sub_resource type="Gradient" id="Gradient_c0ai3"]
 offsets = PackedFloat32Array(0, 0.241071, 0.991071, 1)
@@ -148,14 +157,33 @@ texture = ExtResource("2_m38ub")
 [node name="LaserBullet" parent="Shoters Container/LaserShooter2" instance=ExtResource("3_x43xg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-scale = Vector2(0.4, 2.75)
 shape = SubResource("RectangleShape2D_s21tl")
 one_way_collision_margin = 2.0
 
-[node name="Laser" type="Sprite2D" parent="CollisionShape2D"]
-scale = Vector2(2, 0.25)
-texture = ExtResource("1_ywqq3")
+[node name="barra" type="Sprite2D" parent="CollisionShape2D"]
+z_index = 1000
+texture = ExtResource("4_w14eg")
+
+[node name="barra-shooter" type="Sprite2D" parent="CollisionShape2D"]
+visible = false
+position = Vector2(0, -5.55556)
+texture = ExtResource("5_s4nox")
+
+[node name="CollisionShape_Long" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_5eyg6")
+one_way_collision_margin = 2.0
+
+[node name="barra-long" type="Sprite2D" parent="CollisionShape_Long"]
+texture = ExtResource("6_0bss7")
+
+[node name="CollisionShape_Short" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_uoy7k")
+one_way_collision_margin = 2.0
+
+[node name="barra-short" type="Sprite2D" parent="CollisionShape_Short"]
+texture = ExtResource("7_aubu3")
 
 [node name="AudioReset" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_gkuc5")
@@ -191,6 +219,41 @@ libraries = {
 "": SubResource("AnimationLibrary_ot5ru")
 }
 
+<<<<<<< Updated upstream
+=======
+[node name="Button_manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="Start" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 270.0
+offset_right = 1050.0
+offset_bottom = 360.0
+text = "Start game"
+
+[node name="Options" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 390.0
+offset_right = 1050.0
+offset_bottom = 480.0
+text = "options"
+
+[node name="Quit" type="Button" parent="Button_manager"]
+layout_mode = 0
+offset_left = 777.0
+offset_top = 516.0
+offset_right = 1050.0
+offset_bottom = 606.0
+text = "Quit
+"
+
+>>>>>>> Stashed changes
 [connection signal="disparar" from="." to="." method="_on_disparar"]
 [connection signal="explotar" from="." to="." method="_on_explotar"]
 [connection signal="new_ball" from="." to="." method="_on_new_ball"]
