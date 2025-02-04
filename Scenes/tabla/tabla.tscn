@@ -33,7 +33,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D/Laser:modulate")
+tracks/1/path = NodePath("CollisionShape2D/barra:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -45,7 +45,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D/Laser:position")
+tracks/2/path = NodePath("CollisionShape2D/barra:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -57,7 +57,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D/Laser:modulate")
+tracks/3/path = NodePath("CollisionShape2D/barra:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -163,6 +163,7 @@ stream = ExtResource("4_gkuc5")
 [node name="AudioExplosion" type="AudioStreamPlayer2D" parent="."]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1000
 texture_filter = 1
 emitting = false
 amount = 30
