@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://bsip81h5vfh7n"]
+
+[ext_resource type="Script" path="res://Scenes/Niveles/nivel_1.gd" id="1_xlupy"]
+[ext_resource type="PackedScene" uid="uid://do4fx8tyf7nmr" path="res://Scenes/UI/game_ui.tscn" id="2_47n7x"]
+[ext_resource type="PackedScene" uid="uid://cmnxmea36b686" path="res://Scenes/paredes/paredes.tscn" id="3_jjctp"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="4_2bl7m"]
+[ext_resource type="PackedScene" uid="uid://bqs2wamsewn58" path="res://Scenes/Bloques/bloque_azul.tscn" id="5_4bxil"]
+[ext_resource type="PackedScene" uid="uid://dhe0aqb311uvx" path="res://Scenes/Bloques/bloque_amarillo.tscn" id="6_ngpgl"]
+[ext_resource type="PackedScene" uid="uid://dpsv18r1xkri5" path="res://Scenes/PowerUps/powerUp.tscn" id="7_jctn4"]
+[ext_resource type="PackedScene" uid="uid://b8vjs8mvavcxt" path="res://Scenes/Bloques/brick_cyan.tscn" id="8_8rpva"]
+
+[node name="Nivel 1" type="Node2D"]
+script = ExtResource("1_xlupy")
+
+[node name="game_ui" parent="." instance=ExtResource("2_47n7x")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paredes" parent="." instance=ExtResource("3_jjctp")]
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Paredes"]
+anchor_mode = 0
+script = ExtResource("4_2bl7m")
+metadata/_edit_lock_ = true
+
+[node name="Bloques" type="Node" parent="."]
+
+[node name="brick_cyan" parent="Bloques" instance=ExtResource("8_8rpva")]
+position = Vector2(607, 551)
+
+[node name="Azules" type="Node2D" parent="Bloques"]
+metadata/_edit_lock_ = true
+
+[node name="Linea 1" type="Node2D" parent="Bloques/Azules"]
+
+[node name="Bloque Azul" parent="Bloques/Azules/Linea 1" instance=ExtResource("5_4bxil")]
+position = Vector2(140, -68)
+
+[node name="Linea 2" type="Node2D" parent="Bloques/Azules"]
+
+[node name="Linea 3" type="Node2D" parent="Bloques/Azules"]
+
+[node name="Amarillos" type="Node2D" parent="Bloques"]
+metadata/_edit_lock_ = true
+
+[node name="Linea 1" type="Node" parent="Bloques/Amarillos"]
+
+[node name="Bloque Amarillo" parent="Bloques/Amarillos/Linea 1" instance=ExtResource("6_ngpgl")]
+position = Vector2(244, -64)
+
+[node name="Linea 2" type="Node" parent="Bloques/Amarillos"]
+
+[node name="Linea 3" type="Node" parent="Bloques/Amarillos"]
+
+[node name="PowerUp" parent="." instance=ExtResource("7_jctn4")]
+position = Vector2(1207, 297)
+force_type = "Metal"
