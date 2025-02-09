@@ -64,8 +64,9 @@ func rebotar_en_tabla(collision: KinematicCollision2D):
 	var tabla:CharacterBody2D = collision.get_collider()
 	var collision_shape = tabla.get_node("CollisionShape2D")
 
-	var width = collision_shape.shape.extents.y * collision_shape.scale.y * 2 * tabla.scale.x  # Ajusta por la escala
+	var width = collision_shape.shape.extents.x * collision_shape.scale.x * 2 * tabla.scale.x  # Ajusta por la escala
 
+	print("width:", width, position.x, tabla.position.x)
 	# Calcula la posición relativa del impacto (-1 para borde izquierdo, 1 para borde derecho)
 	var relative_contact = (position.x - tabla.position.x) / (width / 2)
 	
